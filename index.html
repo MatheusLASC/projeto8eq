@@ -60,9 +60,9 @@
         const ANGLE_225 = ANGLE_180 + ANGLE_45;
         const ANGLE_270 = ANGLE_225 + ANGLE_45;;
         const ANGLE_315 = ANGLE_270 + ANGLE_45;;
-   
-    //Lista de Ângulos 
-      const angles = [
+
+        //Lista de Ângulos 
+        const angles = [
             ANGLE_0,
             ANGLE_45,
             ANGLE_90,
@@ -104,9 +104,69 @@
             var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 0, 10), scene);
 
             //Matheus Lima de Almeida - RA: 180018
-    
+
             //Adicionando cada elemento na Cena
-             meshes.push(createHidrogenio());
+            meshes.push(createHidrogenio());
+
+
+            // LITIO
+
+            //CIRCULOS
+            let hoop = BABYLON.MeshBuilder.CreateTorus("hoop", { thickness: 0.05, diameter: 8 }, scene);
+            hoop.position.x = 20;
+            hoop.rotation.x = ANGLE_90;
+
+            let hoop2 = BABYLON.MeshBuilder.CreateTorus("hoop2", { thickness: 0.05, diameter: 4 }, scene);
+            hoop2.position.x = 20;
+            hoop2.rotation.x = ANGLE_90;
+
+            // MATERIAL
+            let vermelho = new BABYLON.StandardMaterial("vermelho", scene);
+            vermelho.emissiveColor = new BABYLON.Color3(1, 0, 0);
+            let azul = new BABYLON.StandardMaterial("azul", scene);
+            azul.emissiveColor = new BABYLON.Color3(0, 0, 1);
+
+
+            let atomo = BABYLON.MeshBuilder.CreateSphere("sphere", {}, scene);
+            atomo.position.x = 22;
+            atomo.material = azul;
+            let atomo2 = BABYLON.MeshBuilder.CreateSphere("sphere2", {}, scene);
+            atomo2.position.x = 18;
+            atomo2.material = azul;
+            let atomo3 = BABYLON.MeshBuilder.CreateSphere("sphere3", {}, scene);
+            atomo3.position.x = 24;
+            atomo3.material = azul;
+
+            // MESH PARA RODAR OS ELETRONS
+            newMesh = new BABYLON.Mesh("atomos", scene);
+            newMesh.addChild(atomo);
+            newMesh.addChild(atomo2);
+            newMesh2 = new BABYLON.Mesh("atomoscirculo2", scene);
+            newMesh2.addChild(atomo3);
+
+
+            // PROTONS E NEUTRONS
+            for (let i = 0; i < 3; i++) {
+                let proton = BABYLON.MeshBuilder.CreateSphere("proton", {}, scene);
+                proton.material = vermelho;
+                proton.position.x = 19.5 + (0.5 * i)
+
+            }
+
+            for (let i = 0; i < 4; i++) {
+                let neutron = BABYLON.MeshBuilder.CreateSphere("neutron", {}, scene);
+                neutron.position.y = 0.5;
+                neutron.position.x = 19.2 + (0.5 * i);
+
+            }
+
+
+
+
+
+
+
+
 
 
 
@@ -126,16 +186,15 @@
 
         }
 
-        function createHidrogenio()
-        {
-                mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x =-12;
-                //Dúvida - Como podemos fazer as esfera dos núcleos de forma mais prática
-                mesh2 = new MyMesh(0, colors[0]);
-                mesh2.root.position.x =-8;
+        function createHidrogenio() {
+            mesh = new MyMesh(4, colors[6]);
+            mesh.root.rotation.x = ANGLE_90;
+            mesh.root.position.x = -12;
+            //Dúvida - Como podemos fazer as esfera dos núcleos de forma mais prática
+            mesh2 = new MyMesh(0, colors[0]);
+            mesh2.root.position.x = -8;
 
-                return mesh;
+            return mesh;
         }
 
 
@@ -179,9 +238,11 @@
 
             rotacao() {
                 this.myMesh.rotation.y += 0.01;
+
             }
 
         }
+
 
 
         engine = createDefaultEngine();
