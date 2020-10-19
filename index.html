@@ -85,7 +85,8 @@
             new BABYLON.Color3(0, 1, 0),
             //Azul Ciano - 6
             new BABYLON.Color3(0, 1, 1),
-            new BABYLON.Color3(1, 1, 0)
+            new BABYLON.Color3(1, 1, 0),
+            new BABYLON.Color3(1, 1, 1),
         ];
 
         var createScene = function () {
@@ -105,69 +106,9 @@
 
             //Matheus Lima de Almeida - RA: 180018
 
-            //Adicionando cada elemento na Cena
-            meshes.push(createHidrogenio());
-
-
-            // LITIO
-
-            //CIRCULOS
-            let hoop = BABYLON.MeshBuilder.CreateTorus("hoop", { thickness: 0.05, diameter: 8 }, scene);
-            hoop.position.x = 20;
-            hoop.rotation.x = ANGLE_90;
-
-            let hoop2 = BABYLON.MeshBuilder.CreateTorus("hoop2", { thickness: 0.05, diameter: 4 }, scene);
-            hoop2.position.x = 20;
-            hoop2.rotation.x = ANGLE_90;
-
-            // MATERIAL
-            let vermelho = new BABYLON.StandardMaterial("vermelho", scene);
-            vermelho.emissiveColor = new BABYLON.Color3(1, 0, 0);
-            let azul = new BABYLON.StandardMaterial("azul", scene);
-            azul.emissiveColor = new BABYLON.Color3(0, 0, 1);
-
-
-            let atomo = BABYLON.MeshBuilder.CreateSphere("sphere", {}, scene);
-            atomo.position.x = 22;
-            atomo.material = azul;
-            let atomo2 = BABYLON.MeshBuilder.CreateSphere("sphere2", {}, scene);
-            atomo2.position.x = 18;
-            atomo2.material = azul;
-            let atomo3 = BABYLON.MeshBuilder.CreateSphere("sphere3", {}, scene);
-            atomo3.position.x = 24;
-            atomo3.material = azul;
-
-            // MESH PARA RODAR OS ELETRONS
-            newMesh = new BABYLON.Mesh("atomos", scene);
-            newMesh.addChild(atomo);
-            newMesh.addChild(atomo2);
-            newMesh2 = new BABYLON.Mesh("atomoscirculo2", scene);
-            newMesh2.addChild(atomo3);
-
-
-            // PROTONS E NEUTRONS
-            for (let i = 0; i < 3; i++) {
-                let proton = BABYLON.MeshBuilder.CreateSphere("proton", {}, scene);
-                proton.material = vermelho;
-                proton.position.x = 19.5 + (0.5 * i)
-
-            }
-
-            for (let i = 0; i < 4; i++) {
-                let neutron = BABYLON.MeshBuilder.CreateSphere("neutron", {}, scene);
-                neutron.position.y = 0.5;
-                neutron.position.x = 19.2 + (0.5 * i);
-
-            }
-
-
-
-
-
-
-
-
-
+            //Chamando cada elemento na Cena
+            createHidrogenio();
+            createHelio();
 
 
 
@@ -175,6 +116,7 @@
             var renderLoop = function () {
                 scene.render();
 
+                //acessa a lista de meshes e faz a rotação em cada mesh de cada meshes[i]
                 meshes.forEach(function (mesh) {
                     mesh.rotacao();
                 });
@@ -186,17 +128,54 @@
 
         }
 
+        //HIDROGÊNIO
         function createHidrogenio() {
             mesh = new MyMesh(4, colors[6]);
             mesh.root.rotation.x = ANGLE_90;
             mesh.root.position.x = -12;
-            //Dúvida - Como podemos fazer as esfera dos núcleos de forma mais prática
+            nucleo(1,0,-8);
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = -8;
-
-            return mesh;
+            meshes.push(mesh);
         }
 
+        //HÉLIO
+        function createHelio() {
+
+            for (var i = 0; i < 2 ; i++) {
+            
+            mesh = new MyMesh(4, colors[6]);
+            mesh.root.rotation.x = ANGLE_90;
+            mesh.myMesh.rotation.y = angles[i];
+            mesh.root.position.x = -3;
+            meshes.push(mesh);
+            }
+            nucleo(2,2,1);
+
+        }
+
+        //funções precisam de uma padronização de movimentação no eixo x,y,z
+        function nucleo(p,n,x)
+        {
+            //função prontons
+            for (var i = 0; i < p; i++) {
+                mesh2 = new MyMesh(0, colors[0]);
+                mesh2.root.position.x = x;
+                x+=0.5;
+            }
+            neutrons(n,x-0.5);
+        }
+
+        function neutrons(n,x)
+        {
+            var y=0.75;
+            for (var i = 0; i < n; i++) {
+                mesh2 = new MyMesh(0, colors[8]);
+                mesh2.root.position.x = x-0.25;
+                mesh2.root.position.y = y;
+                y+=-1.5;
+            }
+        }
 
         //Classe que cria esferas e o raio do seu posicionamento
         //Dúvida: Como criar novos circulos com novos posicionamentos
