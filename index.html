@@ -109,6 +109,7 @@
             //Chamando cada elemento na Cena
             createHidrogenio();
             createHelio();
+            createLitio();
 
 
 
@@ -133,7 +134,7 @@
             mesh = new MyMesh(4, colors[6]);
             mesh.root.rotation.x = ANGLE_90;
             mesh.root.position.x = -12;
-            nucleo(1,0,-8);
+            nucleo(1, 0, -8);
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = -8;
             meshes.push(mesh);
@@ -142,38 +143,85 @@
         //HÉLIO
         function createHelio() {
 
-            for (var i = 0; i < 2 ; i++) {
-            
-            mesh = new MyMesh(4, colors[6]);
-            mesh.root.rotation.x = ANGLE_90;
-            mesh.myMesh.rotation.y = angles[i];
-            mesh.root.position.x = -3;
-            meshes.push(mesh);
+            for (var i = 0; i < 2; i++) {
+
+                mesh = new MyMesh(4, colors[6]);
+                mesh.root.rotation.x = ANGLE_90;
+                mesh.myMesh.rotation.y = angles[i];
+                mesh.root.position.x = -3;
+                meshes.push(mesh);
             }
-            nucleo(2,2,1);
+            nucleo(2, 2, 1);
+
+        }
+
+        function createLitio() {
+
+
+
+            // CRIANDO CIRCULO MENOR PARA ELETRON
+            for (let i = 0; i < 2; i++) {
+                mesh = new MyMesh(2.5, colors[6]);
+                mesh.root.rotation.x = ANGLE_90;
+                mesh.root.position.x = 7.5;
+                mesh.myMesh.rotation.y = angles[i];
+                meshes.push(mesh);
+
+            }
+            // CIRCULO MAIOR
+            for (let i = 0; i < 1; i++) {
+                mesh = new MyMesh(4, colors[6]);
+                mesh.root.rotation.x = ANGLE_90;
+                mesh.root.position.x = 6.0;
+                mesh.myMesh.rotation.y = angles[i];
+                meshes.push(mesh);
+
+            }
+
+
+
+
+
+
+
+            // PROTONS
+            for (let i = 0; i < 3; i++) {
+                var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+                sph.position.x = 9.5 + (i * 0.8);
+                // MATERIAL
+                let vermelho = new BABYLON.StandardMaterial("vermelho", scene);
+                vermelho.diffuseColor = new BABYLON.Color3(1, 0, 0);
+                sph.material = vermelho;
+            }
+
+            // NEUTRONS
+            for (let i = 0; i < 4; i++) {
+                var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+                sph.position.y = 0.7
+                sph.position.x = 8.9 + (i * 0.8);
+            }
+
 
         }
 
         //funções precisam de uma padronização de movimentação no eixo x,y,z
-        function nucleo(p,n,x)
-        {
+        function nucleo(p, n, x) {
             //função prontons
             for (var i = 0; i < p; i++) {
                 mesh2 = new MyMesh(0, colors[0]);
                 mesh2.root.position.x = x;
-                x+=0.5;
+                x += 0.5;
             }
-            neutrons(n,x-0.5);
+            neutrons(n, x - 0.5);
         }
 
-        function neutrons(n,x)
-        {
-            var y=0.75;
+        function neutrons(n, x) {
+            var y = 0.75;
             for (var i = 0; i < n; i++) {
                 mesh2 = new MyMesh(0, colors[8]);
-                mesh2.root.position.x = x-0.25;
+                mesh2.root.position.x = x - 0.25;
                 mesh2.root.position.y = y;
-                y+=-1.5;
+                y += -1.5;
             }
         }
 
