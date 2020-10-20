@@ -138,7 +138,7 @@
             mesh = new MyMesh(4, colors[6]);
             mesh.root.rotation.x = ANGLE_90;
             mesh.root.position.x = -12;
-            nucleo(1, 0, -8);
+            //modelo base
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = -8;
             meshes.push(mesh);
@@ -155,13 +155,11 @@
                 mesh.root.position.x = -3;
                 meshes.push(mesh);
             }
-            nucleo(2, 2, 1);
+           // Altera aqui Lucas, cria do seu jeito o núcleo
 
         }
 
         function createLitio() {
-
-
 
             // CRIANDO CIRCULO MENOR PARA ELETRON
             for (let i = 0; i < 2; i++) {
@@ -181,6 +179,9 @@
                 meshes.push(mesh);
 
             }
+
+             // Alterar posicionamento do núcleo do Lítio
+
             // PROTONS
             for (let i = 0; i < 3; i++) {
                 var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
@@ -198,6 +199,7 @@
                 sph.position.x = 8.9 + (i * 0.8);
             }
 
+           
 
         }
 
@@ -276,41 +278,6 @@
             sph.position.y = 0.5
             sph.position.x = 33
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-        //funções precisam de uma padronização de movimentação no eixo x,y,z
-        function nucleo(p, n, x) {
-            //função prontons
-            for (var i = 0; i < p; i++) {
-                mesh2 = new MyMesh(0, colors[0]);
-                mesh2.root.position.x = x;
-                x += 0.5;
-            }
-            neutrons(n, x - 0.5);
-        }
-
-        function neutrons(n, x) {
-            var y = 0.75;
-            for (var i = 0; i < n; i++) {
-                mesh2 = new MyMesh(0, colors[8]);
-                mesh2.root.position.x = x - 0.25;
-                mesh2.root.position.y = y;
-                y += -1.5;
-            }
         }
 
         //Classe que cria esferas e o raio do seu posicionamento
