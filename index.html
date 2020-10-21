@@ -114,6 +114,7 @@
             createHelio();
             createLitio();
             createBoro();
+            createNitrogenio();
 
 
 
@@ -317,6 +318,31 @@
             var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
             sph.position.y = 0.5
             sph.position.x = 33
+
+        }
+
+        function createNitrogenio() {
+
+            for (let i = 0; i < 2; i++) {
+                mesh = new MyMesh(4.5, colors[6]);
+                mesh.root.rotation.x = ANGLE_90;
+                mesh.root.position.x = 60;
+                mesh.myMesh.rotation.y = angles[i];
+                meshes.push(mesh);
+
+            }
+
+            for (let i = 0; i < 5; i++) {
+                mesh = new MyMesh(6.5, colors[6]);
+                mesh.root.rotation.x = ANGLE_90;
+                mesh.root.position.x = 58;
+                mesh.myMesh.rotation.y = angles[i];
+                meshes.push(mesh);
+
+            }
+
+            //PROTONS
+            //NEUTRONS
 
         }
 
