@@ -155,7 +155,29 @@
                 mesh.root.position.x = -3;
                 meshes.push(mesh);
             }
-           // Altera aqui Lucas, cria do seu jeito o núcleo
+            // Altera aqui Lucas, cria do seu jeito o núcleo
+
+            // PROTONS
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            let vermelho = new BABYLON.StandardMaterial("vermelho", scene);
+            vermelho.diffuseColor = new BABYLON.Color3(1, 0, 0);
+            sph.position.y = 0.5;
+            sph.position.x = 1.7;
+            sph.material = vermelho;
+
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.x = 0.8;
+            sph.material = vermelho;
+
+            // NEUTRONS
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = 0.8
+            sph.position.x = 0.8
+
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = -0.3
+            sph.position.x = 1.6
+
 
         }
 
@@ -179,27 +201,45 @@
                 meshes.push(mesh);
 
             }
+            //PROTONS
 
-             // Alterar posicionamento do núcleo do Lítio
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            let vermelho = new BABYLON.StandardMaterial("vermelho", scene);
+            vermelho.diffuseColor = new BABYLON.Color3(1, 0, 0);
+            sph.position.y = 0.5;
+            sph.position.x = 10.5;
+            sph.material = vermelho;
 
-            // PROTONS
-            for (let i = 0; i < 3; i++) {
-                var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
-                sph.position.x = 9.5 + (i * 0.8);
-                // MATERIAL
-                let vermelho = new BABYLON.StandardMaterial("vermelho", scene);
-                vermelho.diffuseColor = new BABYLON.Color3(1, 0, 0);
-                sph.material = vermelho;
-            }
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.x = 9.9;
+            sph.material = vermelho;
+
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = -0.5;
+            sph.position.x = 9.0;
+            sph.material = vermelho;
 
             // NEUTRONS
-            for (let i = 0; i < 4; i++) {
-                var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
-                sph.position.y = 0.7
-                sph.position.x = 8.9 + (i * 0.8);
-            }
 
-           
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = 0.7
+            sph.position.x = 9.5
+
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = 0.3
+            sph.position.x = 9.2
+
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = -0.9
+            sph.position.x = 9.7
+
+            var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+            sph.position.y = -0.5
+            sph.position.x = 10.5
+
+
+
+
 
         }
 
