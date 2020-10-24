@@ -99,12 +99,10 @@
             // Create the scene space
             var scene = new BABYLON.Scene(engine);
 
-            // Add a camera to the scene and attach it to the canvas
-            //var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, BABYLON.Vector3.Zero(), scene);
-            //camera.setPosition(new BABYLON.Vector3(0, 0, -15));
-            // camera.attachControl(canvas, true);
+            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, BABYLON.Vector3.Zero(), scene);
+            camera.setPosition(new BABYLON.Vector3(0, 0, -70));
+            camera.attachControl(canvas, true);
 
-            var camera = new BABYLON.FreeCamera("Camera", new BABYLON.Vector3(20, 0, -50), scene);
 
 
 
@@ -117,37 +115,56 @@
 
             //Chamando cada elemento na Cena
             createHidrogenio();
-            addButton(-150, -642, "40px", "Hidrogênio")
+            texto(-8, "Hidrôgenio")
             createHelio();
-            addButton(-150, -432, "40px", "Hélio")
+            texto(1, "Hélio")
             createLitio();
-            addButton(-150, -222, "40px", "Lítio")
+            texto(10, "Litio")
+
             createBerilio();
-            addButton(-150, -20, "40px", "Berílio")
+            texto(19, "Berilio")
+
             createBoro();
-            addButton(-150, 188, "40px", "Boro")
+            texto(28, "Boro")
+
             createCarbono();
-            addButton(-150, 398, "40px", "Carbono")
+            texto(37, "Carbono")
+
             createNitrogenio();
-            addButton(-150, 608, "40px", "Nitrogênio")
+            texto(46, "Nitrogênio")
+
             createOxigenio();
-            addButton(-150, 818, "40px", "Oxigênio")
+            texto(55, "Oxigênio")
 
 
 
-            function addButton(top, left, height, text) {
-                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("myUI");
-                var wireButton = BABYLON.GUI.Button.CreateSimpleButton("button", text);
-                wireButton.width = 0.1
-                wireButton.top = top;
-                wireButton.left = left;
-                wireButton.height = height
-                wireButton.color = "white"
-                wireButton.background = "blue"
-                advancedTexture.addControl(wireButton);
 
+            function texto(x, text) {
+                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
+                plane.position.x = x
+                plane.position.y = 6
+
+
+                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+
+                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
+                button1.width = 10;
+                button1.height = 10;
+                button1.color = "white";
+                button1.fontSize = 200;
+                button1.background = "black";
+                advancedTexture.addControl(button1);
 
             }
+
+
+
+
+
+
+
+
+
 
 
             //Animations
