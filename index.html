@@ -115,56 +115,26 @@
 
             //Chamando cada elemento na Cena
             createHidrogenio();
-            texto(-8, "Hidrôgenio")
+            texto(-8, "Hidrôgenio");
             createHelio();
-            texto(1, "Hélio")
+            texto(1, "Hélio");
             createLitio();
-            texto(10, "Litio")
+            texto(10, "Litio");
 
             createBerilio();
-            texto(19, "Berilio")
+            texto(19, "Berilio");
 
             createBoro();
-            texto(28, "Boro")
+            texto(28, "Boro");
 
             createCarbono();
-            texto(37, "Carbono")
+            texto(37, "Carbono");
 
             createNitrogenio();
-            texto(46, "Nitrogênio")
+            texto(46, "Nitrogênio");
 
             createOxigenio();
-            texto(55, "Oxigênio")
-
-
-
-
-            function texto(x, text) {
-                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
-                plane.position.x = x
-                plane.position.y = 6
-
-
-                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
-
-                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
-                button1.width = 10;
-                button1.height = 10;
-                button1.color = "white";
-                button1.fontSize = 200;
-                button1.background = "black";
-                advancedTexture.addControl(button1);
-
-            }
-
-
-
-
-
-
-
-
-
+            texto(55, "Oxigênio");
 
 
             //Animations
@@ -183,12 +153,31 @@
 
         }
 
+        
+        function texto(x, text) {
+                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
+                plane.position.x = x
+                plane.position.y = 6
+
+
+                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+
+                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
+                button1.width = 10;
+                button1.height = 10;
+                button1.color = "white";
+                button1.fontSize = 200;
+                button1.background = "black";
+                advancedTexture.addControl(button1);
+
+            }
+
         //HIDROGÊNIO
         function createHidrogenio() {
-            mesh = new MyMesh(4, colors[6]);
+            mesh = new MyMesh(2.5, colors[6]);
             // Só alterar aqui para mudar a posição do Arco
             mesh.root.rotation.x = ANGLE_90;
-            mesh.root.position.x = -12;
+            mesh.root.position.x = -10.5;
             //modelo base
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = -8;
@@ -200,34 +189,35 @@
 
             for (var i = 0; i < 2; i++) {
 
-                mesh = new MyMesh(4, colors[6]);
+                mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
                 mesh.myMesh.rotation.y = angles[i];
-                mesh.root.position.x = -3;
+                mesh.root.position.x = -1.5;
                 meshes.push(mesh);
             }
 
             //PROTONS
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 1.7;
-            p1.root.position.y = 0.5;
+            p1.root.position.x = 1.6;
+            p1.root.position.y = 0.2;
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 0.8;
-
+            p2.root.position.x = 0.7;
+            p2.root.position.y = -0.3;
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 0.8;
-            n1.root.position.y = 0.8;
+            n1.root.position.x = 0.7;
+            n1.root.position.y = 0.5;
 
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 1.6;
-            n2.root.position.y = -0.3;
+            n2.root.position.x = 1.5;
+            n2.root.position.y = -0.6;
 
         }
 
+        //LÍTIO
         function createLitio() {
 
             // CRIANDO CIRCULO MENOR PARA ELETRON
@@ -242,8 +232,10 @@
             // CIRCULO MAIOR
             for (let i = 0; i < 1; i++) {
                 mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 6.0;
+                mesh.root.rotation.x = ANGLE_270;
+                mesh.root.rotation.z = ANGLE_90;
+                mesh.root.position.x = 10.0;
+                mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -282,6 +274,7 @@
 
         }
 
+        //BERÍLIO
         function createBerilio() {
 
             // CRIANDO CIRCULO MENOR PARA ELETRON
@@ -296,8 +289,10 @@
             // CIRCULO MAIOR
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 15.0;
+                mesh.root.rotation.x = ANGLE_270;
+                mesh.root.rotation.z = ANGLE_90;
+                mesh.root.position.x = 19.0;
+                mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -344,6 +339,8 @@
             n5.root.position.y = 1.0;
 
         }
+
+        //BORO
         function createBoro() {
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
@@ -355,8 +352,10 @@
             }
             for (let i = 0; i < 3; i++) {
                 mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 24.0;
+                mesh.root.rotation.x = ANGLE_270;
+                mesh.root.rotation.z = ANGLE_90;
+                mesh.root.position.x = 28.0;
+                mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -413,6 +412,7 @@
 
         }
 
+        //CARBONO
         function createCarbono() {
 
             for (let i = 0; i < 2; i++) {
@@ -426,8 +426,10 @@
 
             for (let i = 0; i < 4; i++) {
                 mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 33;
+                mesh.root.rotation.x = ANGLE_270;
+                mesh.root.rotation.z = ANGLE_90;
+                mesh.root.position.x = 37.0;
+                mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -487,6 +489,7 @@
 
         }
 
+        //NITROGÊNIO
         function createNitrogenio() {
 
             for (let i = 0; i < 2; i++) {
@@ -500,8 +503,10 @@
 
             for (let i = 0; i < 5; i++) {
                 mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 42;
+                mesh.root.rotation.x = ANGLE_270;
+                mesh.root.rotation.z = ANGLE_90;
+                mesh.root.position.x = 46.0;
+                mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -568,6 +573,7 @@
             n7.root.position.y = -0.4;
         }
 
+        //OXIGÊNIO
         function createOxigenio() {
 
             for (let i = 0; i < 2; i++) {
@@ -581,8 +587,10 @@
 
             for (let i = 0; i < 6; i++) {
                 mesh = new MyMesh(4, colors[6]);
-                mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 51;
+                mesh.root.rotation.x = ANGLE_270;
+                mesh.root.rotation.z = ANGLE_90;
+                mesh.root.position.x = 55.0;
+                mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -657,11 +665,6 @@
 
         }
 
-
-
-
-        //Classe que cria esferas e o raio do seu posicionamento
-        //Dúvida: Como criar novos circulos com novos posicionamentos
         class MyMesh {
             constructor(raio, color) {
                 var material = new BABYLON.StandardMaterial("myMaterial", scene);
