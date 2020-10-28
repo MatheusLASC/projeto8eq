@@ -99,9 +99,15 @@
             // Create the scene space
             var scene = new BABYLON.Scene(engine);
 
-            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, BABYLON.Vector3.Zero(), scene);
-            camera.setPosition(new BABYLON.Vector3(0, 0, -70));
+            // Creates, angles, distances and targets the camera
+            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
+
+            // This positions the camera
+            camera.setPosition(new BABYLON.Vector3(0, 0, -50));
+
+            // This attaches the camera to the canvas
             camera.attachControl(canvas, true);
+
 
 
 
@@ -115,26 +121,21 @@
 
             //Chamando cada elemento na Cena
             createHidrogenio();
-            texto(-8, "Hidrôgenio");
+            texto(-28, "Hidrôgenio");
             createHelio();
-            texto(1, "Hélio");
+            texto(-19, "Hélio");
             createLitio();
-            texto(10, "Litio");
-
+            texto(-10, "Litio");
             createBerilio();
-            texto(19, "Berilio");
-
+            texto(-1, "Berilio");
             createBoro();
-            texto(28, "Boro");
-
+            texto(8, "Boro");
             createCarbono();
-            texto(37, "Carbono");
-
+            texto(17, "Carbono");
             createNitrogenio();
-            texto(46, "Nitrogênio");
-
+            texto(26, "Nitrogênio");
             createOxigenio();
-            texto(55, "Oxigênio");
+            texto(35, "Oxigênio");
 
 
             //Animations
@@ -153,34 +154,34 @@
 
         }
 
-        
+
         function texto(x, text) {
-                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
-                plane.position.x = x
-                plane.position.y = 6
+            var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
+            plane.position.x = x
+            plane.position.y = 6
 
 
-                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+            var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
 
-                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
-                button1.width = 10;
-                button1.height = 10;
-                button1.color = "white";
-                button1.fontSize = 200;
-                button1.background = "black";
-                advancedTexture.addControl(button1);
+            var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
+            button1.width = 10;
+            button1.height = 10;
+            button1.color = "white";
+            button1.fontSize = 200;
+            button1.background = "black";
+            advancedTexture.addControl(button1);
 
-            }
+        }
 
         //HIDROGÊNIO
         function createHidrogenio() {
             mesh = new MyMesh(2.5, colors[6]);
             // Só alterar aqui para mudar a posição do Arco
             mesh.root.rotation.x = ANGLE_90;
-            mesh.root.position.x = -10.5;
+            mesh.root.position.x = -30.5;
             //modelo base
             mesh2 = new MyMesh(0, colors[0]);
-            mesh2.root.position.x = -8;
+            mesh2.root.position.x = -28;
             meshes.push(mesh);
         }
 
@@ -192,27 +193,27 @@
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
                 mesh.myMesh.rotation.y = angles[i];
-                mesh.root.position.x = -1.5;
+                mesh.root.position.x = -21.5;
                 meshes.push(mesh);
             }
 
             //PROTONS
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 1.6;
+            p1.root.position.x = -18.4;
             p1.root.position.y = 0.2;
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 0.7;
+            p2.root.position.x = -19.3;
             p2.root.position.y = -0.3;
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 0.7;
+            n1.root.position.x = -19.3;
             n1.root.position.y = 0.5;
 
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 1.5;
+            n2.root.position.x = -18.5;
             n2.root.position.y = -0.6;
 
         }
@@ -224,7 +225,7 @@
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 7.5;
+                mesh.root.position.x = -12.5;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -234,7 +235,7 @@
                 mesh = new MyMesh(4, colors[6]);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
-                mesh.root.position.x = 10.0;
+                mesh.root.position.x = -10.0;
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
@@ -243,33 +244,33 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 10.8;
+            p1.root.position.x = -10.8;
             p1.root.position.y = 0.5;
 
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 10.2;
+            p2.root.position.x = -10.2;
 
             p3 = new MyMesh(0, colors[0]);
-            p3.root.position.x = 9.3;
+            p3.root.position.x = -9.5;
             p3.root.position.y = -0.5;
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 9.8;
+            n1.root.position.x = -10.2;
             n1.root.position.y = 0.7;
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 9.5;
+            n2.root.position.x = -10.5;
             n2.root.position.y = 0.3;
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 10.0;
+            n3.root.position.x = -10.0;
             n3.root.position.y = -0.9;
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 10.8;
+            n3.root.position.x = -10.8;
             n3.root.position.y = -0.5;
 
         }
@@ -281,7 +282,7 @@
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 16.5;
+                mesh.root.position.x = -3.5;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -291,7 +292,7 @@
                 mesh = new MyMesh(4, colors[6]);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
-                mesh.root.position.x = 19.0;
+                mesh.root.position.x = -1;
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
@@ -300,42 +301,42 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 19.5;
+            p1.root.position.x = -0.5;
             p1.root.position.y = 0.5;
 
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 18.9;
+            p2.root.position.x = -1.1;
 
             p3 = new MyMesh(0, colors[0]);
-            p3.root.position.x = 18.0;
+            p3.root.position.x = -2.0;
             p3.root.position.y = -0.5;
 
             p4 = new MyMesh(0, colors[0]);
-            p4.root.position.x = 20.2;
+            p4.root.position.x = 0.2;
             p4.root.position.y = 0.1;
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 18.5;
+            n1.root.position.x = -1.5;
             n1.root.position.y = 0.7;
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 18.2;
+            n2.root.position.x = -1.8;
             n2.root.position.y = 0.3;
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 18.7;
+            n3.root.position.x = -1.3;
             n3.root.position.y = -0.9;
 
             n4 = new MyMesh(0, colors[8]);
-            n4.root.position.x = 19.5;
+            n4.root.position.x = -0.5;
             n4.root.position.y = -0.5;
 
             n5 = new MyMesh(0, colors[8]);
-            n5.root.position.x = 19.0;
+            n5.root.position.x = -1.0;
             n5.root.position.y = 1.0;
 
         }
@@ -345,7 +346,7 @@
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 25.5;
+                mesh.root.position.x = 5.5;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -354,7 +355,7 @@
                 mesh = new MyMesh(4, colors[6]);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
-                mesh.root.position.x = 28.0;
+                mesh.root.position.x = 8.0;
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
@@ -364,50 +365,50 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 27.1;
+            p1.root.position.x = 7.1;
             p1.root.position.y = -0.7;
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 28.6;
+            p2.root.position.x = 8.6;
             p2.root.position.y = 0.9;
 
             p3 = new MyMesh(0, colors[0]);
-            p3.root.position.x = 27.1;
+            p3.root.position.x = 7.1;
 
             p4 = new MyMesh(0, colors[0]);
-            p4.root.position.x = 28.6;
+            p4.root.position.x = 8.6;
             p4.root.position.y = -0.3;
 
             p5 = new MyMesh(0, colors[0]);
-            p5.root.position.x = 28.1;
+            p5.root.position.x = 8.1;
             p5.root.position.y = -0.7;
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 28.9;
+            n1.root.position.x = 8.9;
             n1.root.position.y = -0.5;
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 27.6;
+            n2.root.position.x = 7.6;
             n2.root.position.y = -1.2;
 
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 28.1;
+            n3.root.position.x = 8.1;
             n3.root.position.y = 0.2;
 
             n4 = new MyMesh(0, colors[8]);
-            n4.root.position.x = 27.6;
+            n4.root.position.x = 7.6;
             n4.root.position.y = 0.8;
 
             n5 = new MyMesh(0, colors[8]);
-            n5.root.position.x = 27.6;
+            n5.root.position.x = 7.6;
             n5.root.position.y = 0.8;
 
             n6 = new MyMesh(0, colors[8]);
-            n6.root.position.x = 29.1;
+            n6.root.position.x = 9.1;
             n6.root.position.y = 0.5;
 
         }
@@ -418,7 +419,7 @@
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 34.5;
+                mesh.root.position.x = 14.5;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -428,7 +429,7 @@
                 mesh = new MyMesh(4, colors[6]);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
-                mesh.root.position.x = 37.0;
+                mesh.root.position.x = 17.0;
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
@@ -438,53 +439,53 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 37.1;
+            p1.root.position.x = 17.1;
             p1.root.position.y = 1.3;
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 37.6;
+            p2.root.position.x = 17.6;
             p2.root.position.y = 1.0;
 
             p3 = new MyMesh(0, colors[0]);
-            p3.root.position.x = 35.8;
+            p3.root.position.x = 15.8;
 
             p4 = new MyMesh(0, colors[0]);
-            p4.root.position.x = 38.0;
+            p4.root.position.x = 18.0;
             p4.root.position.y = -0.3;
 
             p5 = new MyMesh(0, colors[0]);
-            p5.root.position.x = 37.4;
+            p5.root.position.x = 17.4;
             p5.root.position.y = -0.7;
 
             p6 = new MyMesh(0, colors[0]);
-            p6.root.position.x = 36.0;
+            p6.root.position.x = 16.0;
             p6.root.position.y = -0.9;
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 36.5;
+            n1.root.position.x = 16.5;
             n1.root.position.y = 1.2;
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 36.9;
+            n2.root.position.x = 16.9;
             n2.root.position.y = -1.2;
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 37.2;
+            n3.root.position.x = 17.2;
             n3.root.position.y = 0.2;
 
             n4 = new MyMesh(0, colors[8]);
-            n4.root.position.x = 36.5;
+            n4.root.position.x = 16.5;
             n4.root.position.y = 0.6;
 
             n5 = new MyMesh(0, colors[8]);
-            n5.root.position.x = 36.7;
+            n5.root.position.x = 16.7;
             n5.root.position.y = -0.5;
 
             n6 = new MyMesh(0, colors[8]);
-            n6.root.position.x = 38.1;
+            n6.root.position.x = 18.1;
             n6.root.position.y = 0.5;
 
         }
@@ -495,7 +496,7 @@
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 43.5;
+                mesh.root.position.x = 23.5;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -505,7 +506,7 @@
                 mesh = new MyMesh(4, colors[6]);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
-                mesh.root.position.x = 46.0;
+                mesh.root.position.x = 26.0;
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
@@ -515,61 +516,61 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 46.1;
+            p1.root.position.x = 26.1;
             p1.root.position.y = 1.3;
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 46.7;
+            p2.root.position.x = 26.7;
             p2.root.position.y = 1.0;
 
             p3 = new MyMesh(0, colors[0]);
-            p3.root.position.x = 45.0;
+            p3.root.position.x = 25.0;
 
             p4 = new MyMesh(0, colors[0]);
-            p4.root.position.x = 46.7;
+            p4.root.position.x = 26.7;
             p4.root.position.y = -0.2;
 
             p5 = new MyMesh(0, colors[0]);
-            p5.root.position.x = 46.2;
+            p5.root.position.x = 26.2;
             p5.root.position.y = -0.6;
 
             p6 = new MyMesh(0, colors[0]);
-            p6.root.position.x = 45.0;
+            p6.root.position.x = 25.0;
             p6.root.position.y = -0.8;
 
             p7 = new MyMesh(0, colors[0]);
-            p7.root.position.x = 45.6;
+            p7.root.position.x = 25.6;
             p7.root.position.y = -1.3;
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 45.5;
+            n1.root.position.x = 25.5;
             n1.root.position.y = 1.2;
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 46.7;
+            n2.root.position.x = 26.7;
             n2.root.position.y = -1.2;
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 46.2;
+            n3.root.position.x = 26.2;
             n3.root.position.y = 0.3;
 
             n4 = new MyMesh(0, colors[8]);
-            n4.root.position.x = 45.2;
+            n4.root.position.x = 25.2;
             n4.root.position.y = 0.9;
 
             n5 = new MyMesh(0, colors[8]);
-            n5.root.position.x = 45.7;
+            n5.root.position.x = 25.7;
             n5.root.position.y = -0.4;
 
             n6 = new MyMesh(0, colors[8]);
-            n6.root.position.x = 47.1;
+            n6.root.position.x = 27.1;
             n6.root.position.y = 0.4;
 
             n7 = new MyMesh(0, colors[8]);
-            n7.root.position.x = 47.1;
+            n7.root.position.x = 27.1;
             n7.root.position.y = -0.4;
         }
 
@@ -579,7 +580,7 @@
             for (let i = 0; i < 2; i++) {
                 mesh = new MyMesh(2.5, colors[6]);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 52.5;
+                mesh.root.position.x = 32.5;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -589,7 +590,7 @@
                 mesh = new MyMesh(4, colors[6]);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
-                mesh.root.position.x = 55.0;
+                mesh.root.position.x = 35.0;
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
@@ -599,68 +600,68 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0]);
-            p1.root.position.x = 55.1;
+            p1.root.position.x = 35.1;
             p1.root.position.y = 1.3;
 
             p2 = new MyMesh(0, colors[0]);
-            p2.root.position.x = 55.7;
+            p2.root.position.x = 35.7;
             p2.root.position.y = 1.0;
 
             p3 = new MyMesh(0, colors[0]);
-            p3.root.position.x = 54.0;
+            p3.root.position.x = 34.0;
 
             p4 = new MyMesh(0, colors[0]);
-            p4.root.position.x = 55.7;
+            p4.root.position.x = 35.7;
             p4.root.position.y = -0.2;
 
             p5 = new MyMesh(0, colors[0]);
-            p5.root.position.x = 55.2;
+            p5.root.position.x = 35.2;
             p5.root.position.y = -0.6;
 
             p6 = new MyMesh(0, colors[0]);
-            p6.root.position.x = 54.0;
+            p6.root.position.x = 34.0;
             p6.root.position.y = -0.8;
 
             p7 = new MyMesh(0, colors[0]);
-            p7.root.position.x = 54.4;
+            p7.root.position.x = 34.4;
             p7.root.position.y = -1.3;
 
             p8 = new MyMesh(0, colors[0]);
-            p8.root.position.x = 56.1;
+            p8.root.position.x = 36.1;
             p8.root.position.y = 0.2;
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[8]);
-            n1.root.position.x = 54.5;
+            n1.root.position.x = 34.5;
             n1.root.position.y = 1.2;
 
             n2 = new MyMesh(0, colors[8]);
-            n2.root.position.x = 55.1;
+            n2.root.position.x = 35.1;
             n2.root.position.y = -1.2;
 
             n3 = new MyMesh(0, colors[8]);
-            n3.root.position.x = 55.2;
+            n3.root.position.x = 35.2;
             n3.root.position.y = 0.3;
 
             n4 = new MyMesh(0, colors[8]);
-            n4.root.position.x = 54.2;
+            n4.root.position.x = 34.2;
             n4.root.position.y = 0.9;
 
             n5 = new MyMesh(0, colors[8]);
-            n5.root.position.x = 54.7;
+            n5.root.position.x = 34.7;
             n5.root.position.y = -0.4;
 
             n6 = new MyMesh(0, colors[8]);
-            n6.root.position.x = 56.1;
+            n6.root.position.x = 36.1;
             n6.root.position.y = 0.6;
 
             n7 = new MyMesh(0, colors[8]);
-            n7.root.position.x = 56.1;
+            n7.root.position.x = 36.1;
             n7.root.position.y = -0.4;
 
             n8 = new MyMesh(0, colors[8]);
-            n8.root.position.x = 55.6;
+            n8.root.position.x = 35.6;
             n8.root.position.y = -1.2;
 
         }
