@@ -103,7 +103,7 @@
             var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
 
             // This positions the camera
-            camera.setPosition(new BABYLON.Vector3(0, 0, -50));
+            camera.setPosition(new BABYLON.Vector3(0, 0, -20));
 
             // This attaches the camera to the canvas
             camera.attachControl(canvas, true);
@@ -120,10 +120,133 @@
             //Lucas Fernando Pari de Campos - RA: 180083
 
             //Chamando cada elemento na Cena;
-            
-            
+
+
             createHidrogenio();
             texto("Hidrôgenio");
+
+
+            var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+            var appear = false;
+            var buttonhidro = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
+            buttonhidro.width = "150px"
+            buttonhidro.height = "40px";
+            buttonhidro.color = "white";
+            buttonhidro.cornerRadius = 20;
+            buttonhidro.background = "green";
+            buttonhidro.top = 300
+            buttonhidro.left = -520
+
+            buttonhidro.onPointerUpObservable.add(function () {
+                // HIDRO SUMIR
+            });
+            advancedTexture.addControl(buttonhidro);
+
+
+            var buttonhelio = BABYLON.GUI.Button.CreateSimpleButton("but2", "helio");
+            buttonhelio.width = "150px"
+            buttonhelio.height = "40px";
+            buttonhelio.color = "white";
+            buttonhelio.cornerRadius = 20;
+            buttonhelio.background = "green";
+            buttonhelio.top = 300
+            buttonhelio.left = -365
+
+            buttonhelio.onPointerUpObservable.add(function () {
+                // HÉLIO SUMIR
+            });
+            advancedTexture.addControl(buttonhelio);
+
+            var buttonlitio = BABYLON.GUI.Button.CreateSimpleButton("but3", "Lítio");
+            buttonlitio.width = "150px"
+            buttonlitio.height = "40px";
+            buttonlitio.color = "white";
+            buttonlitio.cornerRadius = 20;
+            buttonlitio.background = "green";
+            buttonlitio.top = 300
+            buttonlitio.left = -210
+
+            buttonlitio.onPointerUpObservable.add(function () {
+                // LÍTIO SUMIR
+            });
+            advancedTexture.addControl(buttonlitio);
+
+            var buttonberi = BABYLON.GUI.Button.CreateSimpleButton("but4", "Berílio");
+            buttonberi.width = "150px"
+            buttonberi.height = "40px";
+            buttonberi.color = "white";
+            buttonberi.cornerRadius = 20;
+            buttonberi.background = "green";
+            buttonberi.top = 300
+            buttonberi.left = -55
+
+            buttonberi.onPointerUpObservable.add(function () {
+                // BERÍLIO SUMIR
+            });
+            advancedTexture.addControl(buttonberi);
+
+
+            var buttonboro = BABYLON.GUI.Button.CreateSimpleButton("but5", "Boro");
+            buttonboro.width = "150px"
+            buttonboro.height = "40px";
+            buttonboro.color = "white";
+            buttonboro.cornerRadius = 20;
+            buttonboro.background = "green";
+            buttonboro.top = 300
+            buttonboro.left = 100
+
+            buttonboro.onPointerUpObservable.add(function () {
+                //BORO SUMIR
+            });
+            advancedTexture.addControl(buttonboro);
+
+
+            var buttoncarb = BABYLON.GUI.Button.CreateSimpleButton("but6", "Carbono");
+            buttoncarb.width = "150px"
+            buttoncarb.height = "40px";
+            buttoncarb.color = "white";
+            buttoncarb.cornerRadius = 20;
+            buttoncarb.background = "green";
+            buttoncarb.top = 300
+            buttoncarb.left = 255
+
+            buttoncarb.onPointerUpObservable.add(function () {
+                // CARBONO SUMIR
+            });
+            advancedTexture.addControl(buttoncarb);
+
+
+            var buttonnitro = BABYLON.GUI.Button.CreateSimpleButton("but7", "Nitrogênio");
+            buttonnitro.width = "150px"
+            buttonnitro.height = "40px";
+            buttonnitro.color = "white";
+            buttonnitro.cornerRadius = 20;
+            buttonnitro.background = "green";
+            buttonnitro.top = 300
+            buttonnitro.left = 410
+
+            buttonnitro.onPointerUpObservable.add(function () {
+                // NITROGÊNIO SUMIR
+            });
+            advancedTexture.addControl(buttonnitro);
+
+            var buttonoxi = BABYLON.GUI.Button.CreateSimpleButton("but8", "Oxigênio");
+            buttonoxi.width = "150px"
+            buttonoxi.height = "40px";
+            buttonoxi.color = "white";
+            buttonoxi.cornerRadius = 20;
+            buttonoxi.background = "green";
+            buttonoxi.top = 300
+            buttonoxi.left = 565
+
+            buttonoxi.onPointerUpObservable.add(function () {
+                // OXIGÊNIO SUMIR
+            });
+            advancedTexture.addControl(buttonoxi);
+
+
+
+
             /*
             createHelio();
             texto("Hélio");
@@ -146,7 +269,7 @@
             createOxigenio();
             texto("Oxigênio");
             */
-            
+
 
             //Animations
             var renderLoop = function () {
