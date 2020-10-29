@@ -122,12 +122,9 @@
             //Chamando cada elemento na Cena;
 
 
-            createHidrogenio();
-            texto("Hidrôgenio");
-
 
             var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-            var appear = false;
+            var hidroappear = false;
             var buttonhidro = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
             buttonhidro.width = "150px"
             buttonhidro.height = "40px";
@@ -139,6 +136,15 @@
 
             buttonhidro.onPointerUpObservable.add(function () {
                 // HIDRO SUMIR
+                hidroappear = !hidroappear;
+                if (hidroappear) {
+                    createHidrogenio();
+                    texto("Hidrôgenio");
+                }
+                else {
+                    meshes.pop();
+                }
+
             });
             advancedTexture.addControl(buttonhidro);
 
