@@ -120,36 +120,51 @@
             //Matheus Lima de Almeida - RA: 180018
             //Lucas Fernando Pari de Campos - RA: 180083
 
-
+            //object = createHidrogenio();
             var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-            var hidroappear = false;
-            var buttonhidro = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
-            buttonhidro.width = "150px"
-            buttonhidro.height = "40px";
-            buttonhidro.color = "white";
-            buttonhidro.cornerRadius = 20;
-            buttonhidro.background = "green";
-            buttonhidro.top = 300
-            buttonhidro.left = -520
-           
-            buttonhidro.onPointerUpObservable.add(function () {
+            let contador = 0;
 
-                hidroappear = !hidroappear;
-                if (hidroappear) {
-                  object = createHidrogenio();
-                  nome = textohidrogenio(); // só utilize função se ele for usar o construtor
+
+
+            scene.onKeyboardObservable.add((kbInfo) => {
+                switch (kbInfo.type) {
+                    case BABYLON.KeyboardEventTypes.KEYDOWN:
+                        switch (kbInfo.event.key) {
+                            case "1":
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
+                                object = createHidrogenio();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 200;
+                                button1.left = 150;
+                                advancedTexture.addControl(button1);
+                                break
+                            case "2":
+                                for (var i = 0; i < 2; i++) {
+                                    object[i].removeMesh();
+                                }
+                                advancedTexture.dispose();
+                        }
+                        break;
                 }
-                else {
-
-                    for (var i = 0; i < 2; i++)
-                    {
-                        object[i].removeMesh();
-                    }
-                    nome[0].removeText();
-                }
-
             });
-            advancedTexture.addControl(buttonhidro);
+
+
+
+            /* }
+             else {
+ 
+                 for (var i = 0; i < 2; i++) {
+                     object[i].removeMesh();
+                 }
+                 nome[0].removeText();
+             }
+             */
+
+
 
 
             /*
@@ -187,8 +202,8 @@
 
             return scene;
 
-        }    
-        
+        }
+
 
         //HIDROGÊNIO
         function createHidrogenio() {
@@ -197,21 +212,20 @@
             mesh = new MyMesh(2.5, colors[6]);
             mesh.root.rotation.x = ANGLE_90;
             mesh.root.position.x = 0;
-        
+
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = 2.5;
             meshes.push(mesh);
-            
+
             var objeto = [];
             objeto.push(mesh);
             objeto.push(mesh2);
 
             return objeto;
-            
+
         }
 
-        function textohidrogenio()
-        {
+        function textohidrogenio() {
             //construi igual ao mesh
             name = new Mytexto("Hidrogênio");
 
@@ -226,7 +240,7 @@
 
             //6
             var objeto = [];
-            
+
 
             return objeto;
             for (var i = 0; i < 2; i++) {
@@ -525,7 +539,7 @@
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
-               
+
                 objeto.push(mesh);
             }
 
@@ -618,7 +632,7 @@
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
-                
+
                 objeto.push(mesh);
             }
 
@@ -670,7 +684,7 @@
             n2.root.position.x = 3.2;
             n2.root.position.y = -1.2;
             objeto.push(n2);
-            
+
             n3 = new MyMesh(0, colors[8]);
             n3.root.position.x = 2.7;
             n3.root.position.y = 0.3;
@@ -810,7 +824,7 @@
 
         }
 
-    
+
         class MyMesh {
             constructor(raio, color) {
                 var material = new BABYLON.StandardMaterial("myMaterial", scene);
@@ -830,8 +844,7 @@
 
             }
 
-            removeMesh()
-            {
+            removeMesh() {
                 this.myMesh.dispose();
             }
 
@@ -862,29 +875,28 @@
         }
 
         class Mytexto {
-      constructor(text) {
+            constructor(text) {
 
-        var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
-        plane.position.x = 2.5
-        plane.position.y = 6
-        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
-        var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
-        button1.width = 10;
-        button1.height = 10;
-        button1.color = "white";
-        button1.fontSize = 200;
-        button1.background = "black";
-        advancedTexture.addControl(button1);
-        // como adicionar todos num mesmo mesh?
-        //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
-      }
+                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
+                plane.position.x = 2.5
+                plane.position.y = 6
+                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
+                button1.width = 10;
+                button1.height = 10;
+                button1.color = "white";
+                button1.fontSize = 200;
+                button1.background = "black";
+                advancedTexture.addControl(button1);
+                // como adicionar todos num mesmo mesh?
+                //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
+            }
 
-      removeText()
-      {
-          this.Mytexto.dispose();
-      }
-    }
- 
+            removeText() {
+                this.Mytexto.dispose();
+            }
+        }
+
 
 
         engine = createDefaultEngine();
