@@ -51,8 +51,6 @@
         var scene = null;
         var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
         var meshes = [];
-        var object;
-        var nome;
 
         // Ângulos para as lines
         const ANGLE_0 = 0;
@@ -61,10 +59,18 @@
         const ANGLE_135 = ANGLE_90 + ANGLE_45;
         const ANGLE_180 = ANGLE_135 + ANGLE_45;
         const ANGLE_225 = ANGLE_180 + ANGLE_45;
-        const ANGLE_270 = ANGLE_225 + ANGLE_45;;
-        const ANGLE_315 = ANGLE_270 + ANGLE_45;;
-
-
+        const ANGLE_270 = ANGLE_225 + ANGLE_45;
+        const ANGLE_315 = ANGLE_270 + ANGLE_45;
+        
+        //Elementos
+        var hidrogenio;
+        var helio;
+        var litio;
+        var berilio;
+        var boro;
+        var carbono;
+        var nitrogenio;
+        var oxigenio;
 
 
         //Lista de Ângulos 
@@ -120,9 +126,7 @@
             //Matheus Lima de Almeida - RA: 180018
             //Lucas Fernando Pari de Campos - RA: 180083
 
-            //object = createHidrogenio();
             var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-            let contador = 0;
 
 
 
@@ -132,59 +136,148 @@
                         switch (kbInfo.event.key) {
                             case "1":
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
-                                object = createHidrogenio();
+                                hidrogenio = createHidrogenio();
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
                                 button1.cornerRadius = 20;
                                 button1.background = "green";
-                                button1.top = 200;
-                                button1.left = 150;
+                                //y
+                                button1.top = 300;
+                                //x
+                                button1.left = 100;
                                 advancedTexture.addControl(button1);
                                 break
                             case "2":
                                 for (var i = 0; i < 2; i++) {
-                                    object[i].removeMesh();
+                                    hidrogenio[i].removeMesh();
                                 }
                                 advancedTexture.dispose();
+                                advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hélio");
+                                helio = createHelio();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture2.addControl(button1);
+                                break;
+
+                            case "3":
+                                for (var i = 0; i < 6; i++) {
+                                    helio[i].removeMesh();
+                                }
+                                advancedTexture2.dispose();
+                                advancedTexture3 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Lítio");
+                                litio = createLitio();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture3.addControl(button1);
+                                break;
+
+                            case "4":
+                                for (var i = 0; i < 10; i++) {
+                                    litio[i].removeMesh();
+                                }
+                                advancedTexture3.dispose();
+                                advancedTexture4 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Berílio");
+                                berilio = createBerilio();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture4.addControl(button1);
+                                break;
+
+                            case "5":
+                                for (var i = 0; i < 13; i++) {
+                                    berilio[i].removeMesh();
+                                }
+                                advancedTexture4.dispose();
+                                advancedTexture5 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Boro");
+                                boro = createBoro();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture5.addControl(button1);
+                                break;
+
+                                
+                            case "6":
+                                for (var i = 0; i < 16; i++) {
+                                    boro[i].removeMesh();
+                                }
+                                advancedTexture5.dispose();
+                                advancedTexture6 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Carbono");
+                                carbono = createCarbono();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture6.addControl(button1);
+                                break;
+
+                            case "7":
+                                for (var i = 0; i < 18; i++) {
+                                    carbono[i].removeMesh();
+                                }
+                                advancedTexture6.dispose();
+                                advancedTexture7 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Nitrogênio");
+                                nitrogenio = createNitrogenio();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture7.addControl(button1);
+                                break;
+
+                            case "8":
+                                for (var i = 0; i < 21; i++) {
+                                    nitrogenio[i].removeMesh();
+                                }
+                                advancedTexture7.dispose();
+                                advancedTexture8 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Oxigênio");
+                                oxigenio = createOxigenio();
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 100;
+                                advancedTexture8.addControl(button1);
+                                break;
                         }
                         break;
                 }
             });
-
-
-
-            /* }
-             else {
- 
-                 for (var i = 0; i < 2; i++) {
-                     object[i].removeMesh();
-                 }
-                 nome[0].removeText();
-             }
-             */
-
-
-
-
-            /*
-            createHelio();
-            texto("Hélio");
-            createLitio();
-            texto("Litio");
-            createBerilio();
-            texto("Berilio");
-            createBoro();
-            texto("Boro");
-            createCarbono();
-            texto("Carbono");
-            createNitrogenio();
-            texto("Nitrogênio");
-            
-            createOxigenio();
-            texto("Oxigênio");
-            */
-
 
 
 
@@ -202,8 +295,8 @@
 
             return scene;
 
-        }
-
+        }    
+        
 
         //HIDROGÊNIO
         function createHidrogenio() {
@@ -212,37 +305,26 @@
             mesh = new MyMesh(2.5, colors[6]);
             mesh.root.rotation.x = ANGLE_90;
             mesh.root.position.x = 0;
-
+        
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = 2.5;
             meshes.push(mesh);
-
+            
             var objeto = [];
             objeto.push(mesh);
             objeto.push(mesh2);
 
             return objeto;
-
+            
         }
 
-        function textohidrogenio() {
-            //construi igual ao mesh
-            name = new Mytexto("Hidrogênio");
-
-            var objeto = [];
-            objeto.push(name);
-
-            return objeto;
-        }
 
         //HÉLIO
         function createHelio() {
 
             //6
             var objeto = [];
-
-
-            return objeto;
+            
             for (var i = 0; i < 2; i++) {
 
                 mesh = new MyMesh(2.5, colors[6]);
@@ -346,6 +428,7 @@
             n4.root.position.y = -0.5;
             objeto.push(n4);
 
+            return objeto;
         }
 
         //BERÍLIO
@@ -424,6 +507,7 @@
             n5.root.position.y = 1.0;
             objeto.push(n5);
 
+            return objeto;
         }
 
         //BORO
@@ -513,6 +597,7 @@
             n6.root.position.y = 0.3;
             objeto.push(n6);
 
+            return objeto;
         }
 
         //CARBONO
@@ -539,7 +624,7 @@
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
-
+               
                 objeto.push(mesh);
             }
 
@@ -607,6 +692,7 @@
             n6.root.position.y = 0.5;
             objeto.push(n6);
 
+            return objeto;
         }
 
         //NITROGÊNIO
@@ -632,7 +718,7 @@
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
-
+                
                 objeto.push(mesh);
             }
 
@@ -684,7 +770,7 @@
             n2.root.position.x = 3.2;
             n2.root.position.y = -1.2;
             objeto.push(n2);
-
+            
             n3 = new MyMesh(0, colors[8]);
             n3.root.position.x = 2.7;
             n3.root.position.y = 0.3;
@@ -709,6 +795,8 @@
             n7.root.position.x = 3.6;
             n7.root.position.y = -0.4;
             objeto.push(n7);
+
+            return objeto;
         }
 
         //OXIGÊNIO
@@ -822,14 +910,17 @@
             n8.root.position.y = -1.2;
             objeto.push(n8);
 
+            return objeto;
+
         }
 
-
+    
         class MyMesh {
             constructor(raio, color) {
                 var material = new BABYLON.StandardMaterial("myMaterial", scene);
                 material.diffuseColor = color;
-                //Quase certeza que as texturas tem que ser inseridas aqui no myMesh no lugar do material
+                material.diffuseTexture = new BABYLON.Texture("textures/flocos.jpg", scene);
+                material.wireframe = true;
                 var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
                 sph.material = material;
                 sph.position.x = raio;
@@ -844,7 +935,8 @@
 
             }
 
-            removeMesh() {
+            removeMesh()
+            {
                 this.myMesh.dispose();
             }
 
@@ -875,28 +967,29 @@
         }
 
         class Mytexto {
-            constructor(text) {
+      constructor(text) {
 
-                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
-                plane.position.x = 2.5
-                plane.position.y = 6
-                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
-                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
-                button1.width = 10;
-                button1.height = 10;
-                button1.color = "white";
-                button1.fontSize = 200;
-                button1.background = "black";
-                advancedTexture.addControl(button1);
-                // como adicionar todos num mesmo mesh?
-                //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
-            }
+        var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
+        plane.position.x = 2.5
+        plane.position.y = 6
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+        var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
+        button1.width = 10;
+        button1.height = 10;
+        button1.color = "white";
+        button1.fontSize = 200;
+        button1.background = "black";
+        advancedTexture.addControl(button1);
+        // como adicionar todos num mesmo mesh?
+        //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
+      }
 
-            removeText() {
-                this.Mytexto.dispose();
-            }
-        }
-
+      removeText()
+      {
+          this.Mytexto.dispose();
+      }
+    }
+ 
 
 
         engine = createDefaultEngine();
