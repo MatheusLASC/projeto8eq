@@ -52,6 +52,7 @@
         var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }); };
         var meshes = [];
         var object;
+        var object2;
         var nome;
 
         // Ângulos para as lines
@@ -147,6 +148,18 @@
                                     object[i].removeMesh();
                                 }
                                 advancedTexture.dispose();
+                                advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hélio");
+                                button1.width = "150px"
+                                button1.height = "40px";
+                                button1.color = "white";
+                                button1.cornerRadius = 20;
+                                button1.background = "green";
+                                button1.top = 300;
+                                button1.left = 150;
+                                advancedTexture2.addControl(button1);
+                                break;
+
                         }
                         break;
                 }
@@ -225,6 +238,7 @@
 
         }
 
+
         function textohidrogenio() {
             //construi igual ao mesh
             name = new Mytexto("Hidrogênio");
@@ -251,7 +265,7 @@
                 mesh.root.position.x = 0;
                 meshes.push(mesh);
 
-                objeto.push(mesh);
+                objeto.push(mesh2);
             }
 
             //PROTONS
@@ -876,18 +890,18 @@
 
         class Mytexto {
             constructor(text) {
-
-                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
-                plane.position.x = 2.5
-                plane.position.y = 6
-                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
-                button1.width = 10;
-                button1.height = 10;
+                object = createHidrogenio();
+                button1.width = "150px"
+                button1.height = "40px";
                 button1.color = "white";
-                button1.fontSize = 200;
-                button1.background = "black";
+                button1.cornerRadius = 20;
+                button1.background = "green";
+                button1.top = 200;
+                button1.left = 150;
                 advancedTexture.addControl(button1);
+
+
                 // como adicionar todos num mesmo mesh?
                 //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
             }
