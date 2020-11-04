@@ -61,7 +61,7 @@
         const ANGLE_225 = ANGLE_180 + ANGLE_45;
         const ANGLE_270 = ANGLE_225 + ANGLE_45;
         const ANGLE_315 = ANGLE_270 + ANGLE_45;
-        
+
         //Elementos
         var hidrogenio;
         var helio;
@@ -114,6 +114,11 @@
 
             // This attaches the camera to the canvas
             camera.attachControl(canvas, true);
+            camera.lowerRadiusLimit = camera.radius; // trava scroll da câmera
+            camera.upperRadiusLimit = camera.radius; // trava scroll da câmera
+
+
+
 
 
 
@@ -220,7 +225,7 @@
                                 advancedTexture5.addControl(button1);
                                 break;
 
-                                
+
                             case "6":
                                 for (var i = 0; i < 16; i++) {
                                     boro[i].removeMesh();
@@ -295,8 +300,8 @@
 
             return scene;
 
-        }    
-        
+        }
+
 
         //HIDROGÊNIO
         function createHidrogenio() {
@@ -305,17 +310,17 @@
             mesh = new MyMesh(2.5, colors[6]);
             mesh.root.rotation.x = ANGLE_90;
             mesh.root.position.x = 0;
-        
+
             mesh2 = new MyMesh(0, colors[0]);
             mesh2.root.position.x = 2.5;
             meshes.push(mesh);
-            
+
             var objeto = [];
             objeto.push(mesh);
             objeto.push(mesh2);
 
             return objeto;
-            
+
         }
 
 
@@ -324,7 +329,7 @@
 
             //6
             var objeto = [];
-            
+
             for (var i = 0; i < 2; i++) {
 
                 mesh = new MyMesh(2.5, colors[6]);
@@ -333,7 +338,7 @@
                 mesh.root.position.x = 0;
                 meshes.push(mesh);
 
-                objeto.push(mesh);
+                objeto.push(mesh2);
             }
 
             //PROTONS
@@ -624,7 +629,7 @@
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
-               
+
                 objeto.push(mesh);
             }
 
@@ -718,7 +723,7 @@
                 mesh.root.position.z = 4;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
-                
+
                 objeto.push(mesh);
             }
 
@@ -770,7 +775,7 @@
             n2.root.position.x = 3.2;
             n2.root.position.y = -1.2;
             objeto.push(n2);
-            
+
             n3 = new MyMesh(0, colors[8]);
             n3.root.position.x = 2.7;
             n3.root.position.y = 0.3;
@@ -914,7 +919,7 @@
 
         }
 
-    
+
         class MyMesh {
             constructor(raio, color) {
                 var material = new BABYLON.StandardMaterial("myMaterial", scene);
@@ -935,8 +940,7 @@
 
             }
 
-            removeMesh()
-            {
+            removeMesh() {
                 this.myMesh.dispose();
             }
 
@@ -967,29 +971,28 @@
         }
 
         class Mytexto {
-      constructor(text) {
+            constructor(text) {
 
-        var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
-        plane.position.x = 2.5
-        plane.position.y = 6
-        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
-        var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
-        button1.width = 10;
-        button1.height = 10;
-        button1.color = "white";
-        button1.fontSize = 200;
-        button1.background = "black";
-        advancedTexture.addControl(button1);
-        // como adicionar todos num mesmo mesh?
-        //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
-      }
+                var plane = BABYLON.MeshBuilder.CreatePlane("plane", { size: 5, height: 2 }, scene);
+                plane.position.x = 2.5
+                plane.position.y = 6
+                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+                var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", text);
+                button1.width = 10;
+                button1.height = 10;
+                button1.color = "white";
+                button1.fontSize = 200;
+                button1.background = "black";
+                advancedTexture.addControl(button1);
+                // como adicionar todos num mesmo mesh?
+                //Caso construtor não funcione tente fazer com um objeto normal mesmo dando dispose nele
+            }
 
-      removeText()
-      {
-          this.Mytexto.dispose();
-      }
-    }
- 
+            removeText() {
+                this.Mytexto.dispose();
+            }
+        }
+
 
 
         engine = createDefaultEngine();
