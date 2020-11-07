@@ -119,12 +119,6 @@
             camera.upperRadiusLimit = camera.radius; // trava scroll da câmera
 
 
-
-
-
-
-
-
             //lights
             var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 0, -10), scene);
             var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 0, 10), scene);
@@ -132,9 +126,23 @@
             //Matheus Lima de Almeida - RA: 180018
             //Lucas Fernando Pari de Campos - RA: 180083
 
+            
+           
+
             var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+            var textura = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-
+            /*
+            var button3 = BABYLON.GUI.Button.CreateSimpleButton("but3", "Diminuir");
+            button3.width = "150px"
+            button3.height = "40px";
+            button3.color = "white";
+            button3.cornerRadius = 20;
+            button3.background = "green";
+            button3.top = -280;
+            button3.left = 160;
+            textura.addControl(button3);
+            */
 
             scene.onKeyboardObservable.add((kbInfo) => {
                 switch (kbInfo.type) {
@@ -142,7 +150,7 @@
                         switch (kbInfo.event.key) {
                             case "1":
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
-                                hidrogenio = createHidrogenio();
+                                hidrogenio = createHidrogenio(1,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -153,6 +161,29 @@
                                 //x
                                 button1.left = 100;
                                 advancedTexture.addControl(button1);
+
+                                var button2 = BABYLON.GUI.Button.CreateSimpleButton("but2", "Aumentar");
+                                button2.width = "150px"
+                                button2.height = "40px";
+                                button2.color = "white";
+                                button2.cornerRadius = 20;
+                                button2.background = "green";
+                                button2.top = -280;
+                                button2.left = 0;
+                                textura.addControl(button2);
+
+                                button2.onPointerClickObservable.add(function () {
+                                button2 = !button2;
+
+                                if (button2 = !button2) {
+                                    for (var i = 0; i < 2; i++) {
+                                    hidrogenio[i].removeMesh();
+                                }
+
+                                 hidrogenio = createHidrogenio(2,-2.5,0.5);
+                                }
+                            });
+
                                 break
                             case "2":
                                 for (var i = 0; i < 2; i++) {
@@ -161,7 +192,7 @@
                                 advancedTexture.dispose();
                                 advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hélio");
-                                helio = createHelio();
+                                helio = createHelio(1,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -170,6 +201,28 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture2.addControl(button1);
+
+                                var button3 = BABYLON.GUI.Button.CreateSimpleButton("but3", "Aumentar");
+                                button3.width = "150px"
+                                button3.height = "40px";
+                                button3.color = "white";
+                                button3.cornerRadius = 20;
+                                button3.background = "green";
+                                button3.top = -280;
+                                button3.left = 0;
+                                textura.addControl(button3);
+
+                                button3.onPointerClickObservable.add(function () {
+                                button3 = !button3;
+
+                                if (button3 = !button3) {
+                                    for (var i = 0; i < 6; i++) {
+                                    helio[i].removeMesh();
+                                }
+                                 helio = createHelio(2,-2.5,0.5);
+                                }
+                            });
+
                                 break;
 
                             case "3":
@@ -179,7 +232,7 @@
                                 advancedTexture2.dispose();
                                 advancedTexture3 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Lítio");
-                                litio = createLitio();
+                                litio = createLitio(1,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -188,6 +241,27 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture3.addControl(button1);
+
+                                var button4 = BABYLON.GUI.Button.CreateSimpleButton("but4", "Aumentar");
+                                button4.width = "150px"
+                                button4.height = "40px";
+                                button4.color = "white";
+                                button4.cornerRadius = 20;
+                                button4.background = "green";
+                                button4.top = -280;
+                                button4.left = 0;
+                                textura.addControl(button4);
+
+                                button4.onPointerClickObservable.add(function () {
+                                button4 = !button4;
+
+                                if (button4 = !button4) {
+                                    for (var i = 0; i < 10; i++) {
+                                    litio[i].removeMesh();
+                                }
+                                 litio = createLitio(2,-2.5,0.5,2.5);
+                                }
+                            });
                                 break;
 
                             case "4":
@@ -195,9 +269,10 @@
                                     litio[i].removeMesh();
                                 }
                                 advancedTexture3.dispose();
+
                                 advancedTexture4 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Berílio");
-                                berilio = createBerilio();
+                                berilio = createBerilio(1,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -206,6 +281,27 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture4.addControl(button1);
+
+                                var button5 = BABYLON.GUI.Button.CreateSimpleButton("but5", "Aumentar");
+                                button5.width = "150px"
+                                button5.height = "40px";
+                                button5.color = "white";
+                                button5.cornerRadius = 20;
+                                button5.background = "green";
+                                button5.top = -280;
+                                button5.left = 0;
+                                textura.addControl(button5);
+
+                                button5.onPointerClickObservable.add(function () {
+                                button5 = !button5;
+
+                                if (button5 = !button5) {
+                                    for (var i = 0; i < 13; i++) {
+                                    berilio[i].removeMesh();
+                                }
+                                 berilio = createBerilio(2,-2.5,0.5,2.5);
+                                }
+                            });
                                 break;
 
                             case "5":
@@ -213,9 +309,10 @@
                                     berilio[i].removeMesh();
                                 }
                                 advancedTexture4.dispose();
+                                estrutura = 5;
                                 advancedTexture5 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Boro");
-                                boro = createBoro();
+                                boro = createBoro(1,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -224,6 +321,27 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture5.addControl(button1);
+
+                                var button6 = BABYLON.GUI.Button.CreateSimpleButton("but6", "Aumentar");
+                                button6.width = "150px"
+                                button6.height = "40px";
+                                button6.color = "white";
+                                button6.cornerRadius = 20;
+                                button6.background = "green";
+                                button6.top = -280;
+                                button6.left = 0;
+                                textura.addControl(button6);
+
+                                button6.onPointerClickObservable.add(function () {
+                                button6 = !button6;
+
+                                if (button6 = !button6) {
+                                    for (var i = 0; i < 16; i++) {
+                                    boro[i].removeMesh();
+                                }
+                                 boro = createBoro(2,-2.5,0.5,2.5);
+                                }
+                            });
                                 break;
 
 
@@ -232,9 +350,10 @@
                                     boro[i].removeMesh();
                                 }
                                 advancedTexture5.dispose();
+
                                 advancedTexture6 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Carbono");
-                                carbono = createCarbono();
+                                carbono = createCarbono(1,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -243,6 +362,27 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture6.addControl(button1);
+
+                                var button7 = BABYLON.GUI.Button.CreateSimpleButton("but7", "Aumentar");
+                                button7.width = "150px"
+                                button7.height = "40px";
+                                button7.color = "white";
+                                button7.cornerRadius = 20;
+                                button7.background = "green";
+                                button7.top = -280;
+                                button7.left = 0;
+                                textura.addControl(button7);
+
+                                button7.onPointerClickObservable.add(function () {
+                                button7 = !button7;
+
+                                if (button7 = !button7) {
+                                    for (var i = 0; i < 18; i++) {
+                                    carbono[i].removeMesh();
+                                }
+                                 carbono = createCarbono(2,-2.5,0.5,2.5);
+                                }
+                            });
                                 break;
 
                             case "7":
@@ -250,9 +390,10 @@
                                     carbono[i].removeMesh();
                                 }
                                 advancedTexture6.dispose();
+                                estrutura = 7;
                                 advancedTexture7 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Nitrogênio");
-                                nitrogenio = createNitrogenio();
+                                nitrogenio = createNitrogenio(1,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -261,6 +402,27 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture7.addControl(button1);
+
+                                var button8 = BABYLON.GUI.Button.CreateSimpleButton("but8", "Aumentar");
+                                button8.width = "150px"
+                                button8.height = "40px";
+                                button8.color = "white";
+                                button8.cornerRadius = 20;
+                                button8.background = "green";
+                                button8.top = -280;
+                                button8.left = 0;
+                                textura.addControl(button8);
+
+                                button8.onPointerClickObservable.add(function () {
+                                button8 = !button8;
+
+                                if (button8 = !button8) {
+                                    for (var i = 0; i < 21; i++) {
+                                    nitrogenio[i].removeMesh();
+                                }
+                                 nitrogenio = createNitrogenio(2,-2.5,0.5,2.5);
+                                }
+                            });
                                 break;
 
                             case "8":
@@ -268,9 +430,10 @@
                                     nitrogenio[i].removeMesh();
                                 }
                                 advancedTexture7.dispose();
+                                estrutura = 8;
                                 advancedTexture8 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Oxigênio");
-                                oxigenio = createOxigenio();
+                                oxigenio = createOxigenio(1,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -279,6 +442,27 @@
                                 button1.top = 300;
                                 button1.left = 100;
                                 advancedTexture8.addControl(button1);
+
+                                var button9 = BABYLON.GUI.Button.CreateSimpleButton("but9", "Aumentar");
+                                button9.width = "150px"
+                                button9.height = "40px";
+                                button9.color = "white";
+                                button9.cornerRadius = 20;
+                                button9.background = "green";
+                                button9.top = -280;
+                                button9.left = 0;
+                                textura.addControl(button9);
+
+                                button9.onPointerClickObservable.add(function () {
+                                button9 = !button9;
+
+                                if (button9 = !button9) {
+                                    for (var i = 0; i < 24; i++) {
+                                    oxigenio[i].removeMesh();
+                                }
+                                 oxigenio = createOxigenio(2,-2.5,0.5,2.5);
+                                }
+                            });
                                 break;
                         }
                         break;
@@ -286,7 +470,7 @@
             });
 
 
-
+        
             //Animations
             var renderLoop = function () {
                 scene.render();
@@ -305,14 +489,14 @@
 
 
         //HIDROGÊNIO
-        function createHidrogenio() {
+        function createHidrogenio(mult, posarc,d) {
 
             //2
-            mesh = new MyMesh(2.5, colors[6],1);
+            mesh = new MyMesh(2.5 * mult, colors[6],1,d);
             mesh.root.rotation.x = ANGLE_90;
-            mesh.root.position.x = 0;
+            mesh.root.position.x = 0+posarc;
 
-            mesh2 = new MyMesh(0, colors[0],2);
+            mesh2 = new MyMesh(0, colors[0],2,d);
             mesh2.root.position.x = 2.5;
             meshes.push(mesh);
 
@@ -326,41 +510,41 @@
 
 
         //HÉLIO
-        function createHelio() {
+        function createHelio(mult, posarc,d) {
 
             //6
             var objeto = [];
 
             for (var i = 0; i < 2; i++) {
 
-                mesh = new MyMesh(2.5, colors[6], 1);
+                mesh = new MyMesh(2.5 * mult, colors[6], 1,d);
                 mesh.root.rotation.x = ANGLE_90;
                 mesh.myMesh.rotation.y = angles[i];
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 meshes.push(mesh);
 
                 objeto.push(mesh);
             }
 
             //PROTONS
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 3.1;
             p1.root.position.y = 0.2;
             objeto.push(p1);
 
-            p2 = new MyMesh(0, colors[0], 2);
+            p2 = new MyMesh(0, colors[0], 2,d);
             p2.root.position.x = 2.2;
             p2.root.position.y = -0.3;
             objeto.push(p2);
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 2.2;
             n1.root.position.y = 0.5;
             objeto.push(n1);
 
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 3;
             n2.root.position.y = -0.6;
             objeto.push(n2);
@@ -370,15 +554,15 @@
         }
 
         //LÍTIO
-        function createLitio() {
+        function createLitio(mult, posarc,d,arco) {
 
             //10
             var objeto = [];
             // CRIANDO CIRCULO MENOR PARA ELETRON
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(2.5, colors[6],1);
+                mesh = new MyMesh(2.5*mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -386,11 +570,11 @@
             }
             // CIRCULO MAIOR
             for (let i = 0; i < 1; i++) {
-                mesh = new MyMesh(4, colors[6],1);
+                mesh = new MyMesh(4 + arco, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
                 mesh.root.position.x = 2.5;
-                mesh.root.position.z = 4;
+                mesh.root.position.z = 4+arco;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -398,38 +582,38 @@
             }
             //PROTONS
 
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 3.1;
             p1.root.position.y = 0.5;
             objeto.push(p1);
 
-            p2 = new MyMesh(0, colors[0],2);
+            p2 = new MyMesh(0, colors[0],2,d);
             p2.root.position.x = 2.5;
             objeto.push(p2);
 
-            p3 = new MyMesh(0, colors[0],2);
+            p3 = new MyMesh(0, colors[0],2,d);
             p3.root.position.x = 3.2;
             p3.root.position.y = -0.5;
             objeto.push(p3);
 
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 2.5;
             n1.root.position.y = 0.7;
             objeto.push(n1);
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.0;
             n2.root.position.y = 0.3;
             objeto.push(n2);
 
-            n3 = new MyMesh(0, colors[3],3);
+            n3 = new MyMesh(0, colors[3],3,d);
             n3.root.position.x = 2.7;
             n3.root.position.y = -0.9;
             objeto.push(n3);
 
-            n4 = new MyMesh(0, colors[3],3);
+            n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 1.9;
             n4.root.position.y = -0.5;
             objeto.push(n4);
@@ -438,15 +622,15 @@
         }
 
         //BERÍLIO
-        function createBerilio() {
+        function createBerilio(mult, posarc,d,arco) {
 
             //13
             var objeto = []
             // CRIANDO CIRCULO MENOR PARA ELETRON
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(2.5, colors[6],1);
+                mesh = new MyMesh(2.5*mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -454,11 +638,11 @@
             }
             // CIRCULO MAIOR
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(4, colors[6],1);
+                mesh = new MyMesh(4+arco, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
                 mesh.root.position.x = 2.5;
-                mesh.root.position.z = 4;
+                mesh.root.position.z = 4+arco;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -466,49 +650,49 @@
             }
             //PROTONS
 
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 3;
             p1.root.position.y = 0.5;
             objeto.push(p1);
 
 
-            p2 = new MyMesh(0, colors[0],2);
+            p2 = new MyMesh(0, colors[0],2,d);
             p2.root.position.x = 2.4;
             objeto.push(p2);
 
-            p3 = new MyMesh(0, colors[0],2);
+            p3 = new MyMesh(0, colors[0],2,d);
             p3.root.position.x = 1.5;
             p3.root.position.y = -0.5;
             objeto.push(p3);
 
-            p4 = new MyMesh(0, colors[0],2);
+            p4 = new MyMesh(0, colors[0],2,d);
             p4.root.position.x = 3.3;
             p4.root.position.y = 0.1;
             objeto.push(p4);
 
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 2.0;
             n1.root.position.y = 0.7;
             objeto.push(n1);
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 1.7;
             n2.root.position.y = 0.3;
             objeto.push(n2);
 
-            n3 = new MyMesh(0, colors[3],3);
+            n3 = new MyMesh(0, colors[3],3,d);
             n3.root.position.x = 2.2;
             n3.root.position.y = -0.9;
             objeto.push(n3);
 
-            n4 = new MyMesh(0, colors[3],3);
+            n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 3;
             n4.root.position.y = -0.5;
             objeto.push(n4);
 
-            n5 = new MyMesh(0, colors[3],3);
+            n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.5;
             n5.root.position.y = 1.0;
             objeto.push(n5);
@@ -517,25 +701,25 @@
         }
 
         //BORO
-        function createBoro() {
+        function createBoro(mult, posarc,d,arco) {
 
             //16
             var objeto = [];
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(2.5, colors[6],1);
+                mesh = new MyMesh(2.5*mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
                 objeto.push(mesh);
             }
             for (let i = 0; i < 3; i++) {
-                mesh = new MyMesh(4, colors[6],1);
+                mesh = new MyMesh(4+arco, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
                 mesh.root.position.x = 2.5;
-                mesh.root.position.z = 4;
+                mesh.root.position.z = 4+arco;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -545,26 +729,26 @@
 
             //PROTONS
 
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 1.6;
             p1.root.position.y = -0.7;
             objeto.push(p1);
 
-            p2 =  new MyMesh(0, colors[0],2);
+            p2 =  new MyMesh(0, colors[0],2,d);
             p2.root.position.x = 3.1;
             p2.root.position.y = 0.9;
             objeto.push(p2);
 
-            p3 =  new MyMesh(0, colors[0],2);
+            p3 =  new MyMesh(0, colors[0],2,d);
             p3.root.position.x = 1.8;
             objeto.push(p3);
 
-            p4 =  new MyMesh(0, colors[0],2);
+            p4 =  new MyMesh(0, colors[0],2,d);
             p4.root.position.x = 3.1;
             p4.root.position.y = -0.3;
             objeto.push(p4);
 
-            p5 = new MyMesh(0, colors[0],2);
+            p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.4;
             p5.root.position.y = -0.7;
             objeto.push(p5);
@@ -572,33 +756,33 @@
 
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 3.0;
             n1.root.position.y = -1.0;
             objeto.push(n1);
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.1;
             n2.root.position.y = -1.3;
             objeto.push(n2);
 
 
-            n3 = new MyMesh(0, colors[3],3);
+            n3 = new MyMesh(0, colors[3],3,d);
             n3.root.position.x = 2.6;
             n3.root.position.y = 0.2;
             objeto.push(n3);
 
-            n4 = new MyMesh(0, colors[3],3);
+            n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 2.1;
             n4.root.position.y = 0.8;
             objeto.push(n4);
 
-            n5 = new MyMesh(0, colors[3],3);
+            n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.5;
             n5.root.position.y = 1.1;
             objeto.push(n5);
 
-            n6 = new MyMesh(0, colors[3],3);
+            n6 = new MyMesh(0, colors[3],3,d);
             n6.root.position.x = 3.5;
             n6.root.position.y = 0.3;
             objeto.push(n6);
@@ -607,14 +791,14 @@
         }
 
         //CARBONO
-        function createCarbono() {
+        function createCarbono(mult, posarc,d,arco) {
 
             //18
             var objeto = [];
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(2.5, colors[6],1);
+                mesh = new MyMesh(2.5*mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -623,11 +807,11 @@
             }
 
             for (let i = 0; i < 4; i++) {
-                mesh = new MyMesh(4, colors[6],1);
+                mesh = new MyMesh(4+arco, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
                 mesh.root.position.x = 2.5;
-                mesh.root.position.z = 4;
+                mesh.root.position.z = 4+arco;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -636,31 +820,31 @@
 
             //PROTONS
 
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 2.6;
             p1.root.position.y = 1.1;
             objeto.push(p1);
 
-            p2 = new MyMesh(0, colors[0],2);
+            p2 = new MyMesh(0, colors[0],2,d);
             p2.root.position.x = 3.1;
             p2.root.position.y = 1.0;
             objeto.push(p2);
 
-            p3 = new MyMesh(0, colors[0],2);
+            p3 = new MyMesh(0, colors[0],2,d);
             p3.root.position.x = 1.3;
             objeto.push(p3);
 
-            p4 = new MyMesh(0, colors[0],2);
+            p4 = new MyMesh(0, colors[0],2,d);
             p4.root.position.x = 3.5;
             p4.root.position.y = -0.3;
             objeto.push(p4);
 
-            p5 = new MyMesh(0, colors[0],2);
+            p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.9;
             p5.root.position.y = -0.7;
             objeto.push(p5);
 
-            p6 = new MyMesh(0, colors[0],2);
+            p6 = new MyMesh(0, colors[0],2,d);
             p6.root.position.x = 1.5;
             p6.root.position.y = -0.9;
             objeto.push(p6);
@@ -668,32 +852,32 @@
 
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 1.9;
             n1.root.position.y = 1.0;
             objeto.push(n1);
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.4;
             n2.root.position.y = -1.2;
             objeto.push(n2);
 
-            n3 = new MyMesh(0, colors[3],3);
+            n3 = new MyMesh(0, colors[3],3,d);
             n3.root.position.x = 2.7;
             n3.root.position.y = 0.2;
             objeto.push(n3);
 
-            n4 = new MyMesh(0, colors[3],3);
+            n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 2.0;
             n4.root.position.y = 0.3;
             objeto.push(n4);
 
-            n5 = new MyMesh(0, colors[3],3);
+            n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.2;
             n5.root.position.y = -0.5;
             objeto.push(n5);
 
-            n6 = new MyMesh(0, colors[3],3);
+            n6 = new MyMesh(0, colors[3],3,d);
             n6.root.position.x = 3.6;
             n6.root.position.y = 0.5;
             objeto.push(n6);
@@ -702,14 +886,14 @@
         }
 
         //NITROGÊNIO
-        function createNitrogenio() {
+        function createNitrogenio(mult, posarc,d,arco) {
 
             //21
             var objeto = [];
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(2.5, colors[6],1);
+                mesh = new MyMesh(2.5*mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -717,11 +901,11 @@
             }
 
             for (let i = 0; i < 5; i++) {
-                mesh = new MyMesh(4, colors[6],1);
+                mesh = new MyMesh(4+arco, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
                 mesh.root.position.x = 2.5;
-                mesh.root.position.z = 4;
+                mesh.root.position.z = 4+arco;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -730,36 +914,36 @@
 
             //PROTONS
 
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 2.6;
             p1.root.position.y = 1.2;
             objeto.push(p1);
 
-            p2 = new MyMesh(0, colors[0],2);
+            p2 = new MyMesh(0, colors[0],2,d);
             p2.root.position.x = 3.2;
             p2.root.position.y = 1.0;
             objeto.push(p2);
 
-            p3 = new MyMesh(0, colors[0],2);
+            p3 = new MyMesh(0, colors[0],2,d);
             p3.root.position.x = 1.5;
             objeto.push(p3);
 
-            p4 = new MyMesh(0, colors[0],2);
+            p4 = new MyMesh(0, colors[0],2,d);
             p4.root.position.x = 3.2;
             p4.root.position.y = -0.2;
             objeto.push(p4);
 
-            p5 = new MyMesh(0, colors[0],2);
+            p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.7;
             p5.root.position.y = -0.6;
             objeto.push(p5);
 
-            p6 = new MyMesh(0, colors[0],2);
+            p6 = new MyMesh(0, colors[0],2,d);
             p6.root.position.x = 1.5;
             p6.root.position.y = -0.8;
             objeto.push(p6);
 
-            p7 = new MyMesh(0, colors[0],2);
+            p7 = new MyMesh(0, colors[0],2,d);
             p7.root.position.x = 2.1;
             p7.root.position.y = -1.3;
             objeto.push(p7);
@@ -767,37 +951,37 @@
 
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 2.0;
             n1.root.position.y = 1.2;
             objeto.push(n1);
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 3.2;
             n2.root.position.y = -1.2;
             objeto.push(n2);
 
-            n3 = new MyMesh(0, colors[3],3);
+            n3 = new MyMesh(0, colors[3],3,d);
             n3.root.position.x = 2.7;
             n3.root.position.y = 0.3;
             objeto.push(n3);
 
-            n4 = new MyMesh(0, colors[3],3);
+            n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 2.0;
             n4.root.position.y = 0.5;
             objeto.push(n4);
 
-            n5 = new MyMesh(0, colors[3],3);
+            n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.2;
             n5.root.position.y = -0.4;
             objeto.push(n5);
 
-            n6 = new MyMesh(0, colors[3],3);
+            n6 = new MyMesh(0, colors[3],3,d);
             n6.root.position.x = 3.6;
             n6.root.position.y = 0.4;
             objeto.push(n6);
 
-            n7 = new MyMesh(0, colors[3],3);
+            n7 = new MyMesh(0, colors[3],3,d);
             n7.root.position.x = 3.6;
             n7.root.position.y = -0.4;
             objeto.push(n7);
@@ -806,14 +990,14 @@
         }
 
         //OXIGÊNIO
-        function createOxigenio() {
+        function createOxigenio(mult, posarc,d,arco) {
 
             //24
             var objeto = [];
             for (let i = 0; i < 2; i++) {
-                mesh = new MyMesh(2.5, colors[6],1);
+                mesh = new MyMesh(2.5*mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
-                mesh.root.position.x = 0;
+                mesh.root.position.x = 0+posarc;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -821,11 +1005,11 @@
             }
 
             for (let i = 0; i < 6; i++) {
-                mesh = new MyMesh(4, colors[6],1);
+                mesh = new MyMesh(4+arco, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_270;
                 mesh.root.rotation.z = ANGLE_90;
                 mesh.root.position.x = 2.5;
-                mesh.root.position.z = 4;
+                mesh.root.position.z = 4+arco;
                 mesh.myMesh.rotation.y = angles[i];
                 meshes.push(mesh);
 
@@ -835,83 +1019,83 @@
 
             //PROTONS
 
-            p1 = new MyMesh(0, colors[0],2);
+            p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 2.6;
             p1.root.position.y = 1.1;
             objeto.push(p1);
 
-            p2 = new MyMesh(0, colors[0],2);
+            p2 = new MyMesh(0, colors[0],2,d);
             p2.root.position.x = 3.2;
             p2.root.position.y = 1.0;
             objeto.push(p2);
 
-            p3 = new MyMesh(0, colors[0],2);
+            p3 = new MyMesh(0, colors[0],2,d);
             p3.root.position.x = 1.5;
             objeto.push(p3);
 
-            p4 = new MyMesh(0, colors[0],2);
+            p4 = new MyMesh(0, colors[0],2,d);
             p4.root.position.x = 3.2;
             p4.root.position.y = -0.2;
             objeto.push(p4);
 
-            p5 = new MyMesh(0, colors[0],2);
+            p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.7;
             p5.root.position.y = -0.6;
             objeto.push(p5);
 
-            p6 = new MyMesh(0, colors[0],2);
+            p6 = new MyMesh(0, colors[0],2,d);
             p6.root.position.x = 1.5;
             p6.root.position.y = -0.7;
             objeto.push(p6);
 
-            p7 = new MyMesh(0, colors[0],2);
+            p7 = new MyMesh(0, colors[0],2,d);
             p7.root.position.x = 1.9;
             p7.root.position.y = -1.2;
             objeto.push(p7);
 
-            p8 = new MyMesh(0, colors[0],2);
+            p8 = new MyMesh(0, colors[0],2,d);
             p8.root.position.x = 3.6;
             p8.root.position.y = 0.2;
             objeto.push(p8);
 
             // NEUTRONS
 
-            n1 = new MyMesh(0, colors[3],3);
+            n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 2.0;
             n1.root.position.y = 1.2;
             objeto.push(n1);
 
-            n2 = new MyMesh(0, colors[3],3);
+            n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.6;
             n2.root.position.y = -1.2;
             objeto.push(n2);
 
-            n3 = new MyMesh(0, colors[3],3);
+            n3 = new MyMesh(0, colors[3],3,d);
             n3.root.position.x = 2.7;
             n3.root.position.y = 0.3;
             objeto.push(n3);
 
-            n4 = new MyMesh(0, colors[3],3);
+            n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 1.9;
             n4.root.position.y = 0.6;
             objeto.push(n4);
 
-            n5 = new MyMesh(0, colors[3],3);
+            n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.2;
             n5.root.position.y = -0.3;
             objeto.push(n5);
 
-            n6 = new MyMesh(0, colors[3],3);
+            n6 = new MyMesh(0, colors[3],3,d);
             n6.root.position.x = 3.6;
             n6.root.position.y = 0.6;
             objeto.push(n6);
 
-            n7 = new MyMesh(0, colors[3],3);
+            n7 = new MyMesh(0, colors[3],3,d);
             n7.root.position.x = 3.6;
             n7.root.position.y = -0.4;
             objeto.push(n7);
 
-            n8 = new MyMesh(0, colors[3],3);
+            n8 = new MyMesh(0, colors[3],3,d);
             n8.root.position.x = 3.1;
             n8.root.position.y = -1.2;
             objeto.push(n8);
@@ -922,7 +1106,7 @@
 
 
         class MyMesh {
-            constructor(raio, color, type) {
+            constructor(raio, color, type, d) {
                 var material = new BABYLON.StandardMaterial("myMaterial", scene);
                 material.diffuseColor = color;
                 
@@ -944,7 +1128,7 @@
                 }
                
                 material.wireframe = true;
-                var sph = BABYLON.MeshBuilder.CreateSphere("sph", {}, scene);
+                var sph = BABYLON.MeshBuilder.CreateSphere("sph", {diameter: 1+d}, scene);
                 sph.material = material;
                 sph.position.x = raio;
 
