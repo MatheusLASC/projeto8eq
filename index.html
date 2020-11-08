@@ -92,8 +92,8 @@
             new BABYLON.Color3(1, 0, 0),
             new BABYLON.Color3(0, 1, 0),
             new BABYLON.Color3(0, 0, 1),
-            //Laranja - 3
-            new BABYLON.Color3(1, 0.65, 0),
+            //Verde - 3
+            new BABYLON.Color3(0, 1, 0),
             new BABYLON.Color3(1, 0, 0),
             new BABYLON.Color3(0, 1, 0),
             //Azul Ciano - 6
@@ -132,23 +132,13 @@
             var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
             var textura = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-            /*
-            var button3 = BABYLON.GUI.Button.CreateSimpleButton("but3", "Diminuir");
-            button3.width = "150px"
-            button3.height = "40px";
-            button3.color = "white";
-            button3.cornerRadius = 20;
-            button3.background = "green";
-            button3.top = -280;
-            button3.left = 160;
-            textura.addControl(button3);
-            */
-
             scene.onKeyboardObservable.add((kbInfo) => {
                 switch (kbInfo.type) {
                     case BABYLON.KeyboardEventTypes.KEYDOWN:
                         switch (kbInfo.event.key) {
                             case "1":
+                                limpaelementos();
+                                var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hidrogênio");
                                 hidrogenio = createHidrogenio(1,0,0);
                                 button1.width = "150px"
@@ -184,15 +174,35 @@
                                 }
                             });
 
-                                break
-                            case "2":
-                                for (var i = 0; i < 2; i++) {
+                            var button10 = BABYLON.GUI.Button.CreateSimpleButton("but10", "Diminuir");
+                            button10.width = "150px"
+                            button10.height = "40px";
+                            button10.color = "white";
+                            button10.cornerRadius = 20;
+                            button10.background = "green";
+                            button10.top = -280;
+                            button10.left = 160;
+                            textura.addControl(button10);
+
+                            button10.onPointerClickObservable.add(function () {
+                                button10 = !button10;
+
+                                if (button10 = !button10) {
+                                    for (var i = 0; i < 2; i++) {
                                     hidrogenio[i].removeMesh();
                                 }
-                                advancedTexture.dispose();
+
+                                 hidrogenio = createHidrogenio(0.5,1.25,-0.5);
+                                }
+                            });
+
+
+                                break
+                            case "2":
+                                limpaelementos();
                                 advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Hélio");
-                                helio = createHelio(1,0,0);
+                                helio = createHelio(1,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -219,20 +229,39 @@
                                     for (var i = 0; i < 6; i++) {
                                     helio[i].removeMesh();
                                 }
-                                 helio = createHelio(2,-2.5,0.5);
+                                 helio = createHelio(2,-2.5,0.5,0,0);
                                 }
                             });
+
+                            var button11 = BABYLON.GUI.Button.CreateSimpleButton("but11", "Diminuir");
+                            button11.width = "150px"
+                            button11.height = "40px";
+                            button11.color = "white";
+                            button11.cornerRadius = 20;
+                            button11.background = "green";
+                            button11.top = -280;
+                            button11.left = 160;
+                            textura.addControl(button11);
+
+                            button11.onPointerClickObservable.add(function () {
+                                button11 = !button11;
+
+                                if (button11 = !button11) {
+                                    for (var i = 0; i < 6; i++) {
+                                    helio[i].removeMesh();
+                                }
+                                    helio = createHelio(0.5,1.25,-0.5,-0.25,0.25);
+                                }
+                            });
+
 
                                 break;
 
                             case "3":
-                                for (var i = 0; i < 6; i++) {
-                                    helio[i].removeMesh();
-                                }
-                                advancedTexture2.dispose();
+                                limpaelementos();
                                 advancedTexture3 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Lítio");
-                                litio = createLitio(1,0,0,0);
+                                litio = createLitio(1,0,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -259,20 +288,39 @@
                                     for (var i = 0; i < 10; i++) {
                                     litio[i].removeMesh();
                                 }
-                                 litio = createLitio(2,-2.5,0.5,2.5);
+                                 litio = createLitio(2,-2.5,0.5,2.5,0,0);
                                 }
                             });
+
+                            var button12 = BABYLON.GUI.Button.CreateSimpleButton("but12", "Diminuir");
+                            button12.width = "150px"
+                            button12.height = "40px";
+                            button12.color = "white";
+                            button12.cornerRadius = 20;
+                            button12.background = "green";
+                            button12.top = -280;
+                            button12.left = 160;
+                            textura.addControl(button12);
+
+                            button12.onPointerClickObservable.add(function () {
+                                button12 = !button12;
+
+                                if (button12 = !button12) {
+                                    for (var i = 0; i < 10; i++) {
+                                    litio[i].removeMesh();
+                                }
+                                    litio = createLitio(0.5,1.25,-0.5,-1.25,-0.25,0.25);
+                                }
+                            });
+
                                 break;
 
                             case "4":
-                                for (var i = 0; i < 10; i++) {
-                                    litio[i].removeMesh();
-                                }
-                                advancedTexture3.dispose();
+                            limpaelementos();
 
                                 advancedTexture4 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Berílio");
-                                berilio = createBerilio(1,0,0,0);
+                                berilio = createBerilio(1,0,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -299,20 +347,38 @@
                                     for (var i = 0; i < 13; i++) {
                                     berilio[i].removeMesh();
                                 }
-                                 berilio = createBerilio(2,-2.5,0.5,2.5);
+                                 berilio = createBerilio(2,-2.5,0.5,2.5,0,0);
+                                }
+                            });
+
+                            var button13 = BABYLON.GUI.Button.CreateSimpleButton("but13", "Diminuir");
+                            button13.width = "150px"
+                            button13.height = "40px";
+                            button13.color = "white";
+                            button13.cornerRadius = 20;
+                            button13.background = "green";
+                            button13.top = -280;
+                            button13.left = 160;
+                            textura.addControl(button13);
+
+                            button13.onPointerClickObservable.add(function () {
+                                button13 = !button13;
+
+                                if (button13 = !button13) {
+                                    for (var i = 0; i < 13; i++) {
+                                     berilio[i].removeMesh();
+                                }
+                                    berilio = createBerilio(0.5,1.25,-0.5,-1.25,-0.25,0.25);
                                 }
                             });
                                 break;
 
                             case "5":
-                                for (var i = 0; i < 13; i++) {
-                                    berilio[i].removeMesh();
-                                }
-                                advancedTexture4.dispose();
-                                estrutura = 5;
+                            limpaelementos();
+
                                 advancedTexture5 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Boro");
-                                boro = createBoro(1,0,0,0);
+                                boro = createBoro(1,0,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -339,21 +405,38 @@
                                     for (var i = 0; i < 16; i++) {
                                     boro[i].removeMesh();
                                 }
-                                 boro = createBoro(2,-2.5,0.5,2.5);
+                                 boro = createBoro(2,-2.5,0.5,2.5,0,0);
+                                }
+                            });
+
+                            var button14 = BABYLON.GUI.Button.CreateSimpleButton("but14", "Diminuir");
+                            button14.width = "150px"
+                            button14.height = "40px";
+                            button14.color = "white";
+                            button14.cornerRadius = 20;
+                            button14.background = "green";
+                            button14.top = -280;
+                            button14.left = 160;
+                            textura.addControl(button14);
+
+                            button14.onPointerClickObservable.add(function () {
+                                button14 = !button14;
+
+                                if (button14 = !button14) {
+                                    for (var i = 0; i < 16; i++) {
+                                     boro[i].removeMesh();
+                                }
+                                    boro = createBoro(0.5,1.25,-0.5,-1.25,-0.25,0.25);
                                 }
                             });
                                 break;
 
 
                             case "6":
-                                for (var i = 0; i < 16; i++) {
-                                    boro[i].removeMesh();
-                                }
-                                advancedTexture5.dispose();
-
+                            limpaelementos();
                                 advancedTexture6 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Carbono");
-                                carbono = createCarbono(1,0,0,0);
+                                carbono = createCarbono(1,0,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -380,20 +463,39 @@
                                     for (var i = 0; i < 18; i++) {
                                     carbono[i].removeMesh();
                                 }
-                                 carbono = createCarbono(2,-2.5,0.5,2.5);
+                                 carbono = createCarbono(2,-2.5,0.5,2.5,0,0);
+                                }
+                            });
+
+                            
+                            var button15 = BABYLON.GUI.Button.CreateSimpleButton("but15", "Diminuir");
+                            button15.width = "150px"
+                            button15.height = "40px";
+                            button15.color = "white";
+                            button15.cornerRadius = 20;
+                            button15.background = "green";
+                            button15.top = -280;
+                            button15.left = 160;
+                            textura.addControl(button15);
+
+                            button15.onPointerClickObservable.add(function () {
+                                button15 = !button15;
+
+                                if (button15 = !button15) {
+                                    for (var i = 0; i < 18; i++) {
+                                     carbono[i].removeMesh();
+                                }
+                                    carbono = createCarbono(0.5,1.25,-0.5,-1.25,-0.25,0.25);
                                 }
                             });
                                 break;
 
                             case "7":
-                                for (var i = 0; i < 18; i++) {
-                                    carbono[i].removeMesh();
-                                }
-                                advancedTexture6.dispose();
-                                estrutura = 7;
+                            limpaelementos();
+                                
                                 advancedTexture7 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Nitrogênio");
-                                nitrogenio = createNitrogenio(1,0,0,0);
+                                nitrogenio = createNitrogenio(1,0,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -420,20 +522,38 @@
                                     for (var i = 0; i < 21; i++) {
                                     nitrogenio[i].removeMesh();
                                 }
-                                 nitrogenio = createNitrogenio(2,-2.5,0.5,2.5);
+                                 nitrogenio = createNitrogenio(2,-2.5,0.5,2.5,0,0);
+                                }
+                            });
+
+                            var button16 = BABYLON.GUI.Button.CreateSimpleButton("but16", "Diminuir");
+                            button16.width = "150px"
+                            button16.height = "40px";
+                            button16.color = "white";
+                            button16.cornerRadius = 20;
+                            button16.background = "green";
+                            button16.top = -280;
+                            button16.left = 160;
+                            textura.addControl(button16);
+
+                            button16.onPointerClickObservable.add(function () {
+                                button16 = !button16;
+
+                                if (button16 = !button16) {
+                                    for (var i = 0; i < 21; i++) {
+                                     nitrogenio[i].removeMesh();
+                                }
+                                    nitrogenio = createNitrogenio(0.5,1.25,-0.5,-1.25,-0.25,0.25);
                                 }
                             });
                                 break;
 
                             case "8":
-                                for (var i = 0; i < 21; i++) {
-                                    nitrogenio[i].removeMesh();
-                                }
-                                advancedTexture7.dispose();
-                                estrutura = 8;
+                            limpaelementos();
+                            
                                 advancedTexture8 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                                 var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Oxigênio");
-                                oxigenio = createOxigenio(1,0,0,0);
+                                oxigenio = createOxigenio(1,0,0,0,0,0);
                                 button1.width = "150px"
                                 button1.height = "40px";
                                 button1.color = "white";
@@ -460,7 +580,28 @@
                                     for (var i = 0; i < 24; i++) {
                                     oxigenio[i].removeMesh();
                                 }
-                                 oxigenio = createOxigenio(2,-2.5,0.5,2.5);
+                                 oxigenio = createOxigenio(2,-2.5,0.5,2.5,0,0);
+                                }
+                            });
+
+                            var button17 = BABYLON.GUI.Button.CreateSimpleButton("but17", "Diminuir");
+                            button17.width = "150px"
+                            button17.height = "40px";
+                            button17.color = "white";
+                            button17.cornerRadius = 20;
+                            button17.background = "green";
+                            button17.top = -280;
+                            button17.left = 160;
+                            textura.addControl(button17);
+
+                            button17.onPointerClickObservable.add(function () {
+                                button17 = !button17;
+
+                                if (button17 = !button17) {
+                                    for (var i = 0; i < 24; i++) {
+                                     oxigenio[i].removeMesh();
+                                }
+                                    oxigenio = createOxigenio(0.5,1.25,-0.5,-1.25,-0.25,0.25);
                                 }
                             });
                                 break;
@@ -469,6 +610,7 @@
                 }
             });
 
+            
 
         
             //Animations
@@ -483,10 +625,77 @@
             engine.runRenderLoop(renderLoop);
 
 
+            
+            function limpaelementos()
+            {
+
+                if(hidrogenio != null)
+                                {
+                                    for (var i = 0; i < 2; i++) {
+                                    hidrogenio[i].removeMesh();
+                                    advancedTexture.dispose();
+                                }
+                                }
+                                
+                                if(helio != null)
+                                {
+                                    for (var i = 0; i < 6; i++) {
+                                    helio[i].removeMesh();
+                                    advancedTexture2.dispose();
+                                }
+                                }
+                              
+                                if (litio!= null)
+                                {
+                                    for (var i = 0; i < 10; i++) {
+                                    litio[i].removeMesh();
+                                    advancedTexture3.dispose();
+                                }
+                                }
+                                
+                                if (berilio != null)
+                                {
+                                    for (var i = 0; i < 13; i++) {
+                                    berilio[i].removeMesh();
+                                    advancedTexture4.dispose();
+                                }
+                                }
+                                
+                                if(boro !=null)
+                                {
+                                    for (var i = 0; i < 16; i++) {
+                                    boro[i].removeMesh();
+                                    advancedTexture5.dispose();
+                                }
+                                }
+                                
+                                if(carbono != null)
+                                {
+                                    for (var i = 0; i < 18; i++) {
+                                    carbono[i].removeMesh();
+                                    advancedTexture6.dispose();
+                                }
+                                }
+                               if(nitrogenio != null)
+                               {
+                                for (var i = 0; i < 21; i++) {
+                                    nitrogenio[i].removeMesh();
+                                    advancedTexture7.dispose();
+                                }
+                               }
+                                if(oxigenio != null)
+                                {
+                                    for (var i = 0; i < 24; i++) {
+                                    oxigenio[i].removeMesh();
+                                    advancedTexture8.dispose();
+                                }
+                                }
+            }
             return scene;
 
         }
 
+        
 
         //HIDROGÊNIO
         function createHidrogenio(mult, posarc,d) {
@@ -510,14 +719,14 @@
 
 
         //HÉLIO
-        function createHelio(mult, posarc,d) {
+        function createHelio(mult, posarc,d,esq,dir) {
 
             //6
             var objeto = [];
 
             for (var i = 0; i < 2; i++) {
 
-                mesh = new MyMesh(2.5 * mult, colors[6], 1,d);
+                mesh = new MyMesh(2.5 * mult, colors[6],1,d);
                 mesh.root.rotation.x = ANGLE_90;
                 mesh.myMesh.rotation.y = angles[i];
                 mesh.root.position.x = 0+posarc;
@@ -528,25 +737,25 @@
 
             //PROTONS
             p1 = new MyMesh(0, colors[0],2,d);
-            p1.root.position.x = 3.1;
-            p1.root.position.y = 0.2;
+            p1.root.position.x = 3.1+esq;
+            p1.root.position.y = 0.2+esq;
             objeto.push(p1);
 
-            p2 = new MyMesh(0, colors[0], 2,d);
-            p2.root.position.x = 2.2;
-            p2.root.position.y = -0.3;
+            p2 = new MyMesh(0, colors[0],2,d);
+            p2.root.position.x = 2.2+dir;
+            p2.root.position.y = -0.3+dir;
             objeto.push(p2);
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
-            n1.root.position.x = 2.2;
-            n1.root.position.y = 0.5;
+            n1.root.position.x = 2.2+dir;
+            n1.root.position.y = 0.5+esq;
             objeto.push(n1);
 
 
             n2 = new MyMesh(0, colors[3],3,d);
-            n2.root.position.x = 3;
-            n2.root.position.y = -0.6;
+            n2.root.position.x = 3+esq;
+            n2.root.position.y = -0.6+dir;
             objeto.push(n2);
 
             return objeto;
@@ -554,7 +763,7 @@
         }
 
         //LÍTIO
-        function createLitio(mult, posarc,d,arco) {
+        function createLitio(mult, posarc,d,arco,esq,dir) {
 
             //10
             var objeto = [];
@@ -583,8 +792,8 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0],2,d);
-            p1.root.position.x = 3.1;
-            p1.root.position.y = 0.5;
+            p1.root.position.x = 3.1+esq;
+            p1.root.position.y = 0.5+esq;
             objeto.push(p1);
 
             p2 = new MyMesh(0, colors[0],2,d);
@@ -592,37 +801,37 @@
             objeto.push(p2);
 
             p3 = new MyMesh(0, colors[0],2,d);
-            p3.root.position.x = 3.2;
-            p3.root.position.y = -0.5;
+            p3.root.position.x = 3.2+esq+esq;
+            p3.root.position.y = -0.5+dir;
             objeto.push(p3);
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
             n1.root.position.x = 2.5;
-            n1.root.position.y = 0.7;
+            n1.root.position.y = 0.7+esq;
             objeto.push(n1);
 
             n2 = new MyMesh(0, colors[3],3,d);
-            n2.root.position.x = 2.0;
+            n2.root.position.x = 2.0+dir;
             n2.root.position.y = 0.3;
             objeto.push(n2);
 
             n3 = new MyMesh(0, colors[3],3,d);
-            n3.root.position.x = 2.7;
-            n3.root.position.y = -0.9;
+            n3.root.position.x = 2.7+esq;
+            n3.root.position.y = -0.9+dir+dir;
             objeto.push(n3);
 
             n4 = new MyMesh(0, colors[3],3,d);
-            n4.root.position.x = 1.9;
-            n4.root.position.y = -0.5;
+            n4.root.position.x = 1.9+dir;
+            n4.root.position.y = -0.5+dir+dir;
             objeto.push(n4);
 
             return objeto;
         }
 
         //BERÍLIO
-        function createBerilio(mult, posarc,d,arco) {
+        function createBerilio(mult, posarc,d,arco,esq,dir) {
 
             //13
             var objeto = []
@@ -651,8 +860,8 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0],2,d);
-            p1.root.position.x = 3;
-            p1.root.position.y = 0.5;
+            p1.root.position.x = 3+esq;
+            p1.root.position.y = 0.5+esq;
             objeto.push(p1);
 
 
@@ -661,47 +870,47 @@
             objeto.push(p2);
 
             p3 = new MyMesh(0, colors[0],2,d);
-            p3.root.position.x = 1.5;
-            p3.root.position.y = -0.5;
+            p3.root.position.x = 1.5+dir+dir;
+            p3.root.position.y = -0.5+dir;
             objeto.push(p3);
 
             p4 = new MyMesh(0, colors[0],2,d);
-            p4.root.position.x = 3.3;
+            p4.root.position.x = 3.3+esq;
             p4.root.position.y = 0.1;
             objeto.push(p4);
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
-            n1.root.position.x = 2.0;
-            n1.root.position.y = 0.7;
+            n1.root.position.x = 2.0+dir;
+            n1.root.position.y = 0.7+esq;
             objeto.push(n1);
 
             n2 = new MyMesh(0, colors[3],3,d);
-            n2.root.position.x = 1.7;
-            n2.root.position.y = 0.3;
+            n2.root.position.x = 1.7+dir;
+            n2.root.position.y = 0.3+esq;
             objeto.push(n2);
 
             n3 = new MyMesh(0, colors[3],3,d);
-            n3.root.position.x = 2.2;
-            n3.root.position.y = -0.9;
+            n3.root.position.x = 2.2+dir;
+            n3.root.position.y = -0.9+dir+dir;
             objeto.push(n3);
 
             n4 = new MyMesh(0, colors[3],3,d);
-            n4.root.position.x = 3;
-            n4.root.position.y = -0.5;
+            n4.root.position.x = 3+esq;
+            n4.root.position.y = -0.5+dir;
             objeto.push(n4);
 
             n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.5;
-            n5.root.position.y = 1.0;
+            n5.root.position.y = 1.0+esq+esq;
             objeto.push(n5);
 
             return objeto;
         }
 
         //BORO
-        function createBoro(mult, posarc,d,arco) {
+        function createBoro(mult, posarc,d,arco,esq,dir) {
 
             //16
             var objeto = [];
@@ -730,40 +939,41 @@
             //PROTONS
 
             p1 = new MyMesh(0, colors[0],2,d);
-            p1.root.position.x = 1.6;
-            p1.root.position.y = -0.7;
+            p1.root.position.x = 1.6+dir+dir;
+            p1.root.position.y = -0.7+dir+dir;
             objeto.push(p1);
 
             p2 =  new MyMesh(0, colors[0],2,d);
-            p2.root.position.x = 3.1;
-            p2.root.position.y = 0.9;
+            p2.root.position.x = 3.1+esq;
+            p2.root.position.y = 0.8+esq;
             objeto.push(p2);
 
             p3 =  new MyMesh(0, colors[0],2,d);
-            p3.root.position.x = 1.8;
+            p3.root.position.x = 1.9+dir;
+            p3.root.position.y = 0+dir;
             objeto.push(p3);
 
             p4 =  new MyMesh(0, colors[0],2,d);
-            p4.root.position.x = 3.1;
-            p4.root.position.y = -0.3;
+            p4.root.position.x = 3.1+esq;
+            p4.root.position.y = -0.3+dir;
             objeto.push(p4);
 
             p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.4;
-            p5.root.position.y = -0.7;
+            p5.root.position.y = -0.7+dir+dir;
             objeto.push(p5);
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
-            n1.root.position.x = 3.0;
-            n1.root.position.y = -1.0;
+            n1.root.position.x = 3.0+esq;
+            n1.root.position.y = -1.0+dir+dir;
             objeto.push(n1);
 
             n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.1;
-            n2.root.position.y = -1.3;
+            n2.root.position.y = -1.3+dir+dir+dir;
             objeto.push(n2);
 
 
@@ -774,16 +984,16 @@
 
             n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 2.1;
-            n4.root.position.y = 0.8;
+            n4.root.position.y = 0.8+esq;
             objeto.push(n4);
 
             n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.5;
-            n5.root.position.y = 1.1;
+            n5.root.position.y = 1.1+esq+esq;
             objeto.push(n5);
 
             n6 = new MyMesh(0, colors[3],3,d);
-            n6.root.position.x = 3.5;
+            n6.root.position.x = 3.5+esq+esq;
             n6.root.position.y = 0.3;
             objeto.push(n6);
 
@@ -791,7 +1001,7 @@
         }
 
         //CARBONO
-        function createCarbono(mult, posarc,d,arco) {
+        function createCarbono(mult, posarc,d,arco,esq,dir) {
 
             //18
             var objeto = [];
@@ -822,44 +1032,44 @@
 
             p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 2.6;
-            p1.root.position.y = 1.1;
+            p1.root.position.y = 1.1+esq+esq;
             objeto.push(p1);
 
             p2 = new MyMesh(0, colors[0],2,d);
-            p2.root.position.x = 3.1;
-            p2.root.position.y = 1.0;
+            p2.root.position.x = 3.1+esq;
+            p2.root.position.y = 1.0+esq+esq;
             objeto.push(p2);
 
             p3 = new MyMesh(0, colors[0],2,d);
-            p3.root.position.x = 1.3;
+            p3.root.position.x = 1.3+dir+dir+dir;
             objeto.push(p3);
 
             p4 = new MyMesh(0, colors[0],2,d);
-            p4.root.position.x = 3.5;
-            p4.root.position.y = -0.3;
+            p4.root.position.x = 3.5+esq+esq+esq;
+            p4.root.position.y = -0.3+dir;
             objeto.push(p4);
 
             p5 = new MyMesh(0, colors[0],2,d);
-            p5.root.position.x = 2.9;
-            p5.root.position.y = -0.7;
+            p5.root.position.x = 2.9+esq;
+            p5.root.position.y = -0.7+dir;
             objeto.push(p5);
 
             p6 = new MyMesh(0, colors[0],2,d);
-            p6.root.position.x = 1.5;
-            p6.root.position.y = -0.9;
+            p6.root.position.x = 1.5+dir+dir;
+            p6.root.position.y = -0.9+dir+dir;
             objeto.push(p6);
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
-            n1.root.position.x = 1.9;
-            n1.root.position.y = 1.0;
+            n1.root.position.x = 1.9+dir+dir;
+            n1.root.position.y = 1.0+esq;
             objeto.push(n1);
 
             n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.4;
-            n2.root.position.y = -1.2;
+            n2.root.position.y = -1.2+dir+dir+dir+dir;
             objeto.push(n2);
 
             n3 = new MyMesh(0, colors[3],3,d);
@@ -868,7 +1078,7 @@
             objeto.push(n3);
 
             n4 = new MyMesh(0, colors[3],3,d);
-            n4.root.position.x = 2.0;
+            n4.root.position.x = 2.0+dir;
             n4.root.position.y = 0.3;
             objeto.push(n4);
 
@@ -878,15 +1088,15 @@
             objeto.push(n5);
 
             n6 = new MyMesh(0, colors[3],3,d);
-            n6.root.position.x = 3.6;
-            n6.root.position.y = 0.5;
+            n6.root.position.x = 3.6+esq+esq;
+            n6.root.position.y = 0.5+esq;
             objeto.push(n6);
 
             return objeto;
         }
 
         //NITROGÊNIO
-        function createNitrogenio(mult, posarc,d,arco) {
+        function createNitrogenio(mult, posarc,d,arco,esq,dir) {
 
             //21
             var objeto = [];
@@ -916,81 +1126,82 @@
 
             p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 2.6;
-            p1.root.position.y = 1.2;
+            p1.root.position.y = 1.2+esq+esq+esq;
             objeto.push(p1);
 
             p2 = new MyMesh(0, colors[0],2,d);
-            p2.root.position.x = 3.2;
-            p2.root.position.y = 1.0;
+            p2.root.position.x = 3.2+esq;
+            p2.root.position.y = 1.0+esq+esq;
             objeto.push(p2);
 
             p3 = new MyMesh(0, colors[0],2,d);
-            p3.root.position.x = 1.5;
+            p3.root.position.x = 1.5+dir+dir;
+            p3.root.position.y = 0+esq;
             objeto.push(p3);
 
             p4 = new MyMesh(0, colors[0],2,d);
-            p4.root.position.x = 3.2;
-            p4.root.position.y = -0.2;
+            p4.root.position.x = 3.1+esq;
+            p4.root.position.y = -0.2+dir;
             objeto.push(p4);
 
             p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.7;
-            p5.root.position.y = -0.6;
+            p5.root.position.y = -0.6+dir;
             objeto.push(p5);
 
             p6 = new MyMesh(0, colors[0],2,d);
-            p6.root.position.x = 1.5;
-            p6.root.position.y = -0.8;
+            p6.root.position.x = 1.5+dir+dir+dir+dir;
+            p6.root.position.y = -0.8+dir;
             objeto.push(p6);
 
             p7 = new MyMesh(0, colors[0],2,d);
             p7.root.position.x = 2.1;
-            p7.root.position.y = -1.3;
+            p7.root.position.y = -1.3+dir+dir+dir;
             objeto.push(p7);
 
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
-            n1.root.position.x = 2.0;
-            n1.root.position.y = 1.2;
+            n1.root.position.x = 2.0+dir;
+            n1.root.position.y = 1.2+esq+esq+esq;
             objeto.push(n1);
 
             n2 = new MyMesh(0, colors[3],3,d);
-            n2.root.position.x = 3.2;
-            n2.root.position.y = -1.2;
+            n2.root.position.x = 3.2+esq;
+            n2.root.position.y = -1.2+dir+dir+dir;
             objeto.push(n2);
 
             n3 = new MyMesh(0, colors[3],3,d);
-            n3.root.position.x = 2.7;
-            n3.root.position.y = 0.3;
+            n3.root.position.x = 2.7+esq;
+            n3.root.position.y = 0.3+esq;
             objeto.push(n3);
 
             n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 2.0;
-            n4.root.position.y = 0.5;
+            n4.root.position.y = 0.5+esq;
             objeto.push(n4);
 
             n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.2;
-            n5.root.position.y = -0.4;
+            n5.root.position.y = -0.4+dir;
             objeto.push(n5);
 
             n6 = new MyMesh(0, colors[3],3,d);
-            n6.root.position.x = 3.6;
-            n6.root.position.y = 0.4;
+            n6.root.position.x = 3.4+esq;
+            n6.root.position.y = 0.4+esq;
             objeto.push(n6);
 
             n7 = new MyMesh(0, colors[3],3,d);
-            n7.root.position.x = 3.6;
-            n7.root.position.y = -0.4;
+            n7.root.position.x = 3.4+esq;
+            n7.root.position.y = -0.4+dir;
             objeto.push(n7);
 
             return objeto;
         }
 
         //OXIGÊNIO
-        function createOxigenio(mult, posarc,d,arco) {
+        function createOxigenio(mult, posarc,d,arco,esq,dir) {
 
             //24
             var objeto = [];
@@ -1021,83 +1232,84 @@
 
             p1 = new MyMesh(0, colors[0],2,d);
             p1.root.position.x = 2.6;
-            p1.root.position.y = 1.1;
+            p1.root.position.y = 1.1+esq+esq+esq;
             objeto.push(p1);
 
             p2 = new MyMesh(0, colors[0],2,d);
-            p2.root.position.x = 3.2;
-            p2.root.position.y = 1.0;
+            p2.root.position.x = 3.2+esq+esq;
+            p2.root.position.y = 1.0+esq+esq;
             objeto.push(p2);
 
             p3 = new MyMesh(0, colors[0],2,d);
-            p3.root.position.x = 1.5;
+            p3.root.position.x = 1.5+dir+dir;
+            p3.root.position.y = 0;
             objeto.push(p3);
 
             p4 = new MyMesh(0, colors[0],2,d);
-            p4.root.position.x = 3.2;
-            p4.root.position.y = -0.2;
+            p4.root.position.x = 3.2+esq;
+            p4.root.position.y = -0.2+dir;
             objeto.push(p4);
 
             p5 = new MyMesh(0, colors[0],2,d);
             p5.root.position.x = 2.7;
-            p5.root.position.y = -0.6;
+            p5.root.position.y = -0.6+dir;
             objeto.push(p5);
 
             p6 = new MyMesh(0, colors[0],2,d);
-            p6.root.position.x = 1.5;
-            p6.root.position.y = -0.7;
+            p6.root.position.x = 1.5+dir+dir;
+            p6.root.position.y = -0.7+dir;
             objeto.push(p6);
 
             p7 = new MyMesh(0, colors[0],2,d);
-            p7.root.position.x = 1.9;
-            p7.root.position.y = -1.2;
+            p7.root.position.x = 1.9+dir+dir;
+            p7.root.position.y = -1.2+dir+dir+dir;
             objeto.push(p7);
 
             p8 = new MyMesh(0, colors[0],2,d);
-            p8.root.position.x = 3.6;
-            p8.root.position.y = 0.2;
+            p8.root.position.x = 3.6+esq+esq;
+            p8.root.position.y = 0.2+esq;
             objeto.push(p8);
 
             // NEUTRONS
 
             n1 = new MyMesh(0, colors[3],3,d);
-            n1.root.position.x = 2.0;
-            n1.root.position.y = 1.2;
+            n1.root.position.x = 2.0+dir;
+            n1.root.position.y = 1.2+esq+esq+esq;
             objeto.push(n1);
 
             n2 = new MyMesh(0, colors[3],3,d);
             n2.root.position.x = 2.6;
-            n2.root.position.y = -1.2;
+            n2.root.position.y = -1.2+dir+dir;
             objeto.push(n2);
 
             n3 = new MyMesh(0, colors[3],3,d);
-            n3.root.position.x = 2.7;
-            n3.root.position.y = 0.3;
+            n3.root.position.x = 2.7+esq;
+            n3.root.position.y = 0.3+esq;
             objeto.push(n3);
 
             n4 = new MyMesh(0, colors[3],3,d);
             n4.root.position.x = 1.9;
-            n4.root.position.y = 0.6;
+            n4.root.position.y = 0.6+esq;
             objeto.push(n4);
 
             n5 = new MyMesh(0, colors[3],3,d);
             n5.root.position.x = 2.2;
-            n5.root.position.y = -0.3;
+            n5.root.position.y = -0.3+dir;
             objeto.push(n5);
 
             n6 = new MyMesh(0, colors[3],3,d);
-            n6.root.position.x = 3.6;
-            n6.root.position.y = 0.6;
+            n6.root.position.x = 3.6+esq+esq;
+            n6.root.position.y = 0.6+esq;
             objeto.push(n6);
 
             n7 = new MyMesh(0, colors[3],3,d);
-            n7.root.position.x = 3.6;
+            n7.root.position.x = 3.6+esq+esq;
             n7.root.position.y = -0.4;
             objeto.push(n7);
 
             n8 = new MyMesh(0, colors[3],3,d);
             n8.root.position.x = 3.1;
-            n8.root.position.y = -1.2;
+            n8.root.position.y = -1.2+dir+dir+dir;
             objeto.push(n8);
 
             return objeto;
@@ -1112,19 +1324,19 @@
                 
                 if (type == 1)
                 {
-                    //Azul
-                    material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_blue.svg/300px-Color_icon_red.svg.png", scene);
+                    //Verde
+                    material.diffuseTexture = new BABYLON.Texture("https://img.freepik.com/vetores-gratis/vetor-de-fundo-branco-de-texturas-de-onda_53876-60286.jpg?size=626&ext=jpg", scene);
 
                 }
                 else if (type == 2)
                 {
                     //Vermelho
-                    material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_blue.svg/300px-Color_icon_blue.svg.png", scene);
+                    material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_red.svg/300px-Color_icon_red.svg.png", scene);
                 }
                 else if (type == 3)
                 {
-                    //Laranja
-                    material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_orange.svg/300px-Color_icon_orange.svg.png", scene);
+                    //Verde
+                    material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_green.svg/300px-Color_icon_green.svg.png", scene);
                 }
                
                 material.wireframe = true;
