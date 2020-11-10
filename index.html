@@ -1320,22 +1320,26 @@
         class MyMesh {
             constructor(raio, color, type, d) {
                 var material = new BABYLON.StandardMaterial("myMaterial", scene);
-                material.diffuseColor = color;
                 
                 if (type == 1)
                 {
-                    //Verde
-                    material.diffuseTexture = new BABYLON.Texture("https://img.freepik.com/vetores-gratis/vetor-de-fundo-branco-de-texturas-de-onda_53876-60286.jpg?size=626&ext=jpg", scene);
-
+                    //Azul
+                    // Caso o link da textura caia (pare de funcionar), use este link e comente o material emissive color- https://img.freepik.com/vetores-gratis/vetor-de-fundo-branco-de-texturas-de-onda_53876-60286.jpg?size=626&ext=jpg
+                    
+                    material.emissiveColor = color;
+                    material.emissiveTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_blue.svg/300px-Color_icon_blue.svg.png", scene);
+                   
                 }
                 else if (type == 2)
                 {
                     //Vermelho
+                    material.diffuseColor = color;
                     material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_red.svg/300px-Color_icon_red.svg.png", scene);
                 }
                 else if (type == 3)
                 {
                     //Verde
+                    material.diffuseColor = color;
                     material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Color_icon_green.svg/300px-Color_icon_green.svg.png", scene);
                 }
                
